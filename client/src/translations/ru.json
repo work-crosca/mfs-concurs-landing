@@ -1,0 +1,43 @@
+{
+  "homepage": {
+    "title": "Конкурс дизайна Visa Card",
+    "welcome": "Добро пожаловать! Выберите один из вариантов:",
+    "apply": "Подать заявку на конкурс",
+    "vote": "Голосовать за участников"
+  },
+
+  "header": {
+    "home": "Главная",
+    "apply": "Участвовать"
+  },
+
+  "hero": {
+    "title": "Конкурс дизайна Visa Card",
+    "subtitle": "Создайте самый креативный дизайн и выиграйте потрясающие призы!",
+    "cta": "Участвовать",
+    "text": "Скидки – это нормально!"
+  },
+  "about": {
+    "title": "Что такое Moldcell Visa Card?",
+    "description": "Это виртуальная карта, мгновенно выпускаемая в приложении Moldcell Money без платы за выпуск и обслуживание. Используйте её для онлайн-покупок, бесконтактных платежей с телефона и получайте промо-кэшбэк. Всё просто, безопасно и прямо с вашего телефона."
+  },
+  "faq": {
+    "title": "Întrebări frecvente",
+    "q1": "Ce este aplicația my moldcell?",
+    "a1": "Este aplicația oficială pentru gestionarea contului tău Moldcell.",
+    "q2": "Cum pot descărca aplicația?",
+    "a2": "Accesează App Store sau Google Play și caută „my moldcell”.",
+    "q3": "Cum pot colecta GiftBox-ul săptămânal?",
+    "a3": "Trebuie să te autentifici zilnic în aplicația My Moldcell și să colectezi câte o steluță zilnic, timp de 7 zile consecutive. La finalul seriei, primești GiftBox-ul cu premiul garantat!",
+    "q4": "Cum activez/dezactivez autoprelungirea unei opțiuni?",
+    "a4": "Activarea sau dezactivarea autoprelungirii se face simplu, folosind toggle (butonul de activare/dezactivare) din aplicație, direct din secțiunea opțiunii respective."
+  },
+
+  "inscriere": {
+    "title": "Înscrie-te în concurs",
+    "nickname": "Nickname",
+    "email": "Email",
+    "selectCategory": "Selectează categoria",
+    "submit": "Trimite"
+  }
+}
