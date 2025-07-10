@@ -11,7 +11,7 @@ export default function InscrierePage() {
     email: "",
     category: "",
     description: "",
-    file: null
+    file: null,
   });
   const [agree, setAgree] = useState(false);
   const [toast, setToast] = useState(null);
@@ -25,7 +25,7 @@ export default function InscrierePage() {
     if (name === "description" && value.length > 150) return;
     setFormData({
       ...formData,
-      [name]: files ? files[0] : value
+      [name]: files ? files[0] : value,
     });
   };
 
@@ -33,7 +33,10 @@ export default function InscrierePage() {
     e.preventDefault();
 
     if (!agree) {
-      setToast({ type: "error", message: "Trebuie să fii de acord cu condițiile!" });
+      setToast({
+        type: "error",
+        message: "Trebuie să fii de acord cu condițiile!",
+      });
       return;
     }
 
@@ -48,19 +51,28 @@ export default function InscrierePage() {
       const data = new FormData();
       data.append("chat_id", CHAT_ID);
       data.append("document", formData.file);
-      data.append("caption", `📥 Nouă înscriere:
+      data.append(
+        "caption",
+        `📥 Nouă înscriere:
 👤 Nickname: ${formData.nickname}
 ✉️ Email: ${formData.email}
 🎨 Categoria: ${formData.category}
-📝 Descriere: ${formData.description}`);
+📝 Descriere: ${formData.description}`
+      );
 
       await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendDocument`, {
         method: "POST",
-        body: data
+        body: data,
       });
 
       setToast({ type: "success", message: "Trimis pe Telegram cu succes!" });
-      setFormData({ nickname: "", email: "", category: "", description: "", file: null });
+      setFormData({
+        nickname: "",
+        email: "",
+        category: "",
+        description: "",
+        file: null,
+      });
       setAgree(false);
     } catch (err) {
       console.error(err);
@@ -133,20 +145,25 @@ export default function InscrierePage() {
               onChange={(e) => setAgree(e.target.checked)}
               required
             />
-            <span>Confirm că sunt de acord cu <a href="http://" target="_blank" rel="noopener noreferrer">condițiile de participare</a></span>
+            <span>
+              Confirm că sunt de acord cu{" "}
+              <a href="http://" target="_blank" rel="noopener noreferrer">
+                condițiile de participare
+              </a>
+            </span>
           </label>
 
           <button type="submit" disabled={loading}>
-            {loading ? <FaSpinner className="spinner" /> : t("inscriere.submit")}
+            {loading ? (
+              <FaSpinner className="spinner" />
+            ) : (
+              t("inscriere.submit")
+            )}
           </button>
         </form>
       </motion.section>
 
-      {toast && (
-        <div className={`toast ${toast.type}`}>
-          {toast.message}
-        </div>
-      )}
+      {toast && <div className={`toast ${toast.type}`}>{toast.message}</div>}
     </div>
   );
 }
