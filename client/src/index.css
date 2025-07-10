@@ -15,4 +15,7 @@ body {
   background-color: #F0F2F3;
   margin: 0;
   padding: 0;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
 }
