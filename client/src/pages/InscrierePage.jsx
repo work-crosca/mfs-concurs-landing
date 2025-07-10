@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
+import { FaSpinner } from "react-icons/fa";
 import "../styles/InscrierePage.css";
 
 export default function InscrierePage() {
@@ -12,6 +13,7 @@ export default function InscrierePage() {
     description: "",
     file: null
   });
+  const [agree, setAgree] = useState(false);
   const [toast, setToast] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -20,7 +22,6 @@ export default function InscrierePage() {
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    // limităm descrierea la 150 caractere
     if (name === "description" && value.length > 150) return;
     setFormData({
       ...formData,
@@ -30,6 +31,11 @@ export default function InscrierePage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!agree) {
+      setToast({ type: "error", message: "Trebuie să fii de acord cu condițiile!" });
+      return;
+    }
 
     if (formData.file && formData.file.type !== "image/png") {
       setToast({ type: "error", message: "Fișierul trebuie să fie PNG!" });
@@ -55,6 +61,7 @@ export default function InscrierePage() {
 
       setToast({ type: "success", message: "Trimis pe Telegram cu succes!" });
       setFormData({ nickname: "", email: "", category: "", description: "", file: null });
+      setAgree(false);
     } catch (err) {
       console.error(err);
       setToast({ type: "error", message: "Eroare la trimitere." });
@@ -108,6 +115,9 @@ export default function InscrierePage() {
             maxLength={150}
             rows="3"
           />
+          <div className="description-counter">
+            {formData.description.length}/150
+          </div>
           <input
             type="file"
             name="file"
@@ -115,8 +125,19 @@ export default function InscrierePage() {
             onChange={handleChange}
             required
           />
+
+          <label className="checkbox-agreement">
+            <input
+              type="checkbox"
+              checked={agree}
+              onChange={(e) => setAgree(e.target.checked)}
+              required
+            />
+            <span>Confirm că sunt de acord cu <a href="http://" target="_blank" rel="noopener noreferrer">condițiile de participare</a></span>
+          </label>
+
           <button type="submit" disabled={loading}>
-            {loading ? "Se trimite..." : t("inscriere.submit")}
+            {loading ? <FaSpinner className="spinner" /> : t("inscriere.submit")}
           </button>
         </form>
       </motion.section>

@@ -27,7 +27,7 @@ export default function Header() {
 
       <nav className="header-right">
         <div className="navbar-links">
-          <Link to="/inscriere">{t('header.apply')}</Link>
+          {/*<Link to="/inscriere">{t('header.apply')}</Link>*/}
         </div>
 
         <LanguageSwitcher />
