@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-import { FaSpinner } from "react-icons/fa";
+import { FaSpinner, FaUpload } from "react-icons/fa";
 import "../styles/InscrierePage.css";
 
 export default function InscrierePage() {
@@ -11,7 +11,7 @@ export default function InscrierePage() {
     email: "",
     category: "",
     description: "",
-    file: null,
+    file: null
   });
   const [agree, setAgree] = useState(false);
   const [toast, setToast] = useState(null);
@@ -19,24 +19,34 @@ export default function InscrierePage() {
 
   const BOT_TOKEN = import.meta.env.VITE_TELEGRAM_TOKEN;
   const CHAT_ID = import.meta.env.VITE_TELEGRAM_CHAT_ID;
+  const fileInputRef = useRef(null);
 
   const handleChange = (e) => {
-    const { name, value, files } = e.target;
+    const { name, value } = e.target;
     if (name === "description" && value.length > 150) return;
-    setFormData({
-      ...formData,
-      [name]: files ? files[0] : value,
-    });
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleFileChange = (file) => {
+    if (file && file.type !== "image/png") {
+      setToast({ type: "error", message: "Fișierul trebuie să fie PNG!" });
+      return;
+    }
+    setFormData({ ...formData, file });
+  };
+
+  const handleFileDrop = (e) => {
+    e.preventDefault();
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+      handleFileChange(e.dataTransfer.files[0]);
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!agree) {
-      setToast({
-        type: "error",
-        message: "Trebuie să fii de acord cu condițiile!",
-      });
+      setToast({ type: "error", message: "Trebuie să fii de acord cu condițiile!" });
       return;
     }
 
@@ -51,28 +61,19 @@ export default function InscrierePage() {
       const data = new FormData();
       data.append("chat_id", CHAT_ID);
       data.append("document", formData.file);
-      data.append(
-        "caption",
-        `📥 Nouă înscriere:
+      data.append("caption", `📥 Nouă înscriere:
 👤 Nickname: ${formData.nickname}
 ✉️ Email: ${formData.email}
 🎨 Categoria: ${formData.category}
-📝 Descriere: ${formData.description}`
-      );
+📝 Descriere: ${formData.description}`);
 
       await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendDocument`, {
         method: "POST",
-        body: data,
+        body: data
       });
 
       setToast({ type: "success", message: "Trimis pe Telegram cu succes!" });
-      setFormData({
-        nickname: "",
-        email: "",
-        category: "",
-        description: "",
-        file: null,
-      });
+      setFormData({ nickname: "", email: "", category: "", description: "", file: null });
       setAgree(false);
     } catch (err) {
       console.error(err);
@@ -130,11 +131,26 @@ export default function InscrierePage() {
           <div className="description-counter">
             {formData.description.length}/150
           </div>
+
+          <div
+            className="file-dropzone"
+            onDragOver={(e) => e.preventDefault()}
+            onDrop={handleFileDrop}
+            onClick={() => fileInputRef.current.click()}
+          >
+            <FaUpload size={30} />
+            <p>
+              {formData.file
+                ? `Selectat: ${formData.file.name}`
+                : "Trage fișierul PNG aici sau click pentru a alege"}
+            </p>
+          </div>
           <input
             type="file"
-            name="file"
             accept=".png"
-            onChange={handleChange}
+            ref={fileInputRef}
+            style={{ display: "none" }}
+            onChange={(e) => handleFileChange(e.target.files[0])}
             required
           />
 
@@ -145,25 +161,20 @@ export default function InscrierePage() {
               onChange={(e) => setAgree(e.target.checked)}
               required
             />
-            <span>
-              Confirm că sunt de acord cu{" "}
-              <a href="http://" target="_blank" rel="noopener noreferrer">
-                condițiile de participare
-              </a>
-            </span>
+            Confirm că sunt de acord cu condițiile de participare
           </label>
 
           <button type="submit" disabled={loading}>
-            {loading ? (
-              <FaSpinner className="spinner" />
-            ) : (
-              t("inscriere.submit")
-            )}
+            {loading ? <FaSpinner className="spinner" /> : t("inscriere.submit")}
           </button>
         </form>
       </motion.section>
 
-      {toast && <div className={`toast ${toast.type}`}>{toast.message}</div>}
+      {toast && (
+        <div className={`toast ${toast.type}`}>
+          {toast.message}
+        </div>
+      )}
     </div>
   );
 }

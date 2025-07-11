@@ -42,7 +42,6 @@
    gap: 1.2rem;
  }
  
- /* Input, select și textarea unificat */
  .inscriere-form input,
  .inscriere-form select,
  .inscriere-form textarea {
@@ -69,7 +68,6 @@
    outline: none;
  }
  
- /* Select cu icon custom */
  .inscriere-form select {
    -webkit-appearance: none;
    -moz-appearance: none;
@@ -81,7 +79,6 @@
    background-size: 1.2rem;
  }
  
- /* Buton */
  .inscriere-form button {
    padding: 1rem 2rem;
    border: none;
@@ -98,7 +95,6 @@
    box-shadow: 0 12px 24px rgba(153, 10, 227, 0.2);
  }
  
- /* Toast elegant */
  .toast {
    position: fixed;
    bottom: 20px;
@@ -127,7 +123,6 @@
    100% { transform: translateY(20px); opacity: 0; }
  }
  
- /* Spinner */
  .spinner {
    animation: spin 1s linear infinite;
  }
@@ -136,7 +131,6 @@
    100% { transform: rotate(360deg); }
  }
  
- /* Counter */
  .description-counter {
    font-size: 0.9rem;
    color: #555;
@@ -145,7 +139,7 @@
 
  @media (max-width: 768px) {
    .inscriere-page {
-     justify-content: center; /* centrat pe mobil */
+     justify-content: center; 
    }
  
    .inscriere-container {
@@ -175,4 +169,38 @@
    0% { transform: translate(-50%, -20px); opacity: 0; }
    10%, 90% { transform: translate(-50%, 0); opacity: 0.95; }
    100% { transform: translate(-50%, -20px); opacity: 0; }
+ }
+
+ .file-dropzone {
+   border: 2px dashed rgba(153, 10, 227, 0.5);
+   border-radius: 1.5rem;
+   padding: 2rem;
+   text-align: center;
+   cursor: pointer;
+   transition: background 0.3s, border 0.3s;
+ }
+ 
+ .file-dropzone:hover {
+   background: rgba(153, 10, 227, 0.05);
+   border-color: rgba(153, 10, 227, 0.8);
+ }
+ 
+ .file-dropzone p {
+   margin-top: 0.5rem;
+   font-size: 0.95rem;
+   color: #555;
+ }
+ 
+ .checkbox-agreement {
+   display: flex;
+   align-items: center;
+   gap: 0.5rem;
+   font-size: 0.95rem;
+   color: #555;
+ }
+ 
+ .checkbox-agreement input[type="checkbox"] {
+   width: 18px;
+   height: 18px;
+   accent-color: #990ae3;
  }
