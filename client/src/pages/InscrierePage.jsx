@@ -50,6 +50,11 @@ export default function InscrierePage() {
       return;
     }
 
+    if (!formData.file) {
+      setToast({ type: "error", message: "Trebuie să încarci un fișier PNG!" });
+      return;
+    }
+
     if (formData.file && formData.file.type !== "image/png") {
       setToast({ type: "error", message: "Fișierul trebuie să fie PNG!" });
       return;
