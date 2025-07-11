@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import CountdownTimer from "./UI/CountdownTimer";
 import "../styles/HeroSection.css";
+import heroCard from "../assets/promo.png?w=800&format=webp&as=src";
 
 export default function HeroSection() {
   const { t } = useTranslation();
@@ -9,12 +9,24 @@ export default function HeroSection() {
   return (
     <section className="hero">
       <div className="hero-content">
-        <CountdownTimer targetDate="2025-07-20T23:59:59" />
-        <h1>{t("hero.title")}</h1>
-        <p>{t("hero.subtitle")}</p>
-        <a href="/inscriere" className="hero-button">
-          {t("hero.cta")}
-        </a>
+        <div className="hero-content-left">
+          <img src={heroCard} alt="Moldcell Visa" />
+        </div>
+        <div className="hero-content-right">
+          <div className="hero-text">
+            <p>{t("hero.text")}</p>
+            <h1>{t("hero.title1")}</h1>
+            <h1>{t("hero.title2")}</h1>
+            <p>{t("hero.subtitle")}</p>
+          </div>
+
+          <button
+            className="hero-button"
+            onClick={() => (window.location.href = "/inscriere")}
+          >
+            {t("hero.cta")}
+          </button>
+        </div>
       </div>
     </section>
   );

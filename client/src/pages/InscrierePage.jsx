@@ -3,8 +3,8 @@ import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { FaSpinner, FaUpload } from "react-icons/fa";
 import "../styles/InscrierePage.css";
-import overlayDark from "../assets/shablon/VISA-shablon-dark.png";
-import overlayLight from "../assets/shablon/VISA-shablon-light.png";
+import overlayDark from "../assets/shablon/VISA-shablon-dark.png?w=800&format=webp&as=src";
+import overlayLight from "../assets/shablon/VISA-shablon-light.png?w=800&format=webp&as=src";
 
 export default function InscrierePage() {
   const { t } = useTranslation();
@@ -213,7 +213,7 @@ export default function InscrierePage() {
               onChange={(e) => setAgree(e.target.checked)}
               required
             />
-            Confirm că sunt de acord cu condițiile de participare
+            Confirm că sunt de acord cu <a href="">condițiile de participare</a>
           </label>
 
           <button type="submit" disabled={loading}>

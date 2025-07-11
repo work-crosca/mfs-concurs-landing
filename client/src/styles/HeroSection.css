@@ -3,80 +3,92 @@
   justify-content: center;
   box-sizing: border-box;
   align-items: center;
-  text-align: center;
   min-height: 100vh;
-  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 0%, #f0f2f5 100%);
+  background: radial-gradient(circle at center, #333 0%, #000 100%);
   color: #111;
   padding: 3rem 1rem;
 }
 
 .hero-content {
-  max-width: 800px;
+  max-width: 100%;
   height: auto;
+  display: flex;
+  gap: 4rem;
+  box-sizing: border-box!important;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  padding: 2rem;
 }
 
-.hero-subtitle {
-  display: block;
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 1rem;
+.hero-content-left{
+  width: 100%;
 }
+.hero-content-left img{
+  width: 100%;
+}
+
+.hero-content-right{
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hero-text h1,
+.hero-text p {
+  margin: 0;
+}
+
 
 .hero-content h1 {
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-size: 4rem;
   font-weight: 700;
-  margin-bottom: 1.5rem;
   line-height: 1.2;
   background: linear-gradient(90deg, #990ae3, #ff28b1);
   background-clip: text;
-  -webkit-background-clip: text;
+  -webkit-background-clip: text;font-style: normal;
+  font-weight: 700;
+  line-height: 4.1rem; 
   -webkit-text-fill-color: transparent;
 }
 
 .hero-content p {
-  font-size: 1.2rem;
-  color: #555;
-  margin-bottom: 2.5rem;
+  font-size: 3rem;
+  color: #e5e5e5;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
 }
 
-.hero-button {
+.hero-button{
   border-radius: 2rem;
-  background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 1));
-  border: 1px solid #fff;
-  backdrop-filter: blur(8px);
+  background: #CC3CFF;
+  text-transform: uppercase;
   text-decoration: none;
-  color: #333;
+  color: #FFF;
   padding: 1rem 2rem;
   font-size: 1rem;
   cursor: pointer;
-  margin-bottom: 2rem;
   transition: all 0.3s ease;
-  box-shadow: rgba(17, 12, 46, 0.1) 0px 24px 50px 0px;
+  border: none;
+  margin-top: 1rem;
 }
 
 .hero-button:hover {
   transform: translateY(-5px);
+  background-color: var(--base-color);
 }
 
-.hero-partners {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-  margin-top: 3rem;
-  font-size: 1rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: #444;
-}
 
-.hero-partners span {
-  opacity: 0.8;
-  transition: opacity 0.3s ease;
+@media (max-width: 600px){
+  .hero-content{
+    flex-direction: column;
+    padding: 1rem;
+  }
 }
-
-.hero-partners span:hover {
-  opacity: 1;
-}
-
