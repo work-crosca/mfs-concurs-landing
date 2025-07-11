@@ -31,7 +31,7 @@ export default function HeroSection() {
       </div>
 
       {/* Săgeată scroll jos */}
-      <div className="scroll-down">
+      <div className="scroll-down-arrow">
         <FiChevronDown size={40} />
       </div>
     </section>
