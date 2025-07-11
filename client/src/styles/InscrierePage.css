@@ -159,6 +159,7 @@
      bottom: auto;
      left: 50%;
      width: 90vw;
+     box-sizing: border-box;
      right: auto;
      transform: translateX(-50%);
      animation: fadeInOutDown 3s forwards;
