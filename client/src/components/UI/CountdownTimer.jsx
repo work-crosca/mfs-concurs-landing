@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import "../../styles/CountdownTimer.css";
 
 export default function CountdownTimer({ targetDate }) {
@@ -27,7 +28,12 @@ export default function CountdownTimer({ targetDate }) {
   }, [targetDate]);
 
   return (
-    <div className="timer-container">
+    <motion.div
+      className="timer-container"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
       <div className="timer-item">
         <div className="timer-value">{timeLeft.days}</div>
         <div className="timer-label">Days</div>
@@ -47,6 +53,6 @@ export default function CountdownTimer({ targetDate }) {
         <div className="timer-value">{timeLeft.seconds}</div>
         <div className="timer-label">Seconds</div>
       </div>
-    </div>
+    </motion.div>
   );
 }
