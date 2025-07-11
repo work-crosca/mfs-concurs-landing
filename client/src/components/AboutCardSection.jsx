@@ -17,44 +17,44 @@ const AboutCardSection = () => {
   // scale on scroll
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"]
+    offset: ["start end", "end start"],
   });
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
   return (
-    <section className="about-card-container" ref={containerRef}>
-      <motion.div
-        className="about-card-image"
-        ref={imageRef}
-        initial={{ opacity: 0, scale: 0.8}}
-        animate={imageInView ? { opacity: 1, scale: 1.1 } : {}}
-        transition={{ duration: 0.6 }}
-      >
-        <motion.img
-          src={cardImage}
-          alt="Moldcell Visa Card"
-          loading="lazy"
-          style={{
-            scale,
-            y: ["0%", "-2%", "0%", "2%", "0%"], // plutire
-            transition: "y 4s ease-in-out infinite"
-          }}
-        />
-      </motion.div>
+    <>
+      <section className="about-card-container" ref={containerRef}>
+        <motion.div
+          className="about-card-left"
+          ref={imageRef}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={imageInView ? { opacity: 1, scale: 1.1 } : {}}
+          transition={{ duration: 0.6 }}
+        >
+          <motion.img
+            src={cardImage}
+            alt="Moldcell Visa Card"
+            loading="lazy"
+            style={{
+              scale,
+              y: ["0%", "-2%", "0%", "2%", "0%"], // plutire
+              transition: "y 4s ease-in-out infinite",
+            }}
+          />
+        </motion.div>
 
-      <motion.div
-        className="about-card-text"
-        ref={textRef}
-        initial={{ opacity: 0, y: 40 }}
-        animate={textInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.7 }}
-      >
-        <h2>{t("about.title")}</h2>
-        <p className="about-description">
-          {t("about.description")}
-        </p>
-      </motion.div>
-    </section>
+        <motion.div
+          className="about-card-right"
+          ref={textRef}
+          initial={{ opacity: 0, y: 40 }}
+          animate={textInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
+        >
+          <h2>{t("about.title")}</h2>
+          <p>{t("about.description")}</p>
+        </motion.div>
+      </section>
+    </>
   );
 };
 
