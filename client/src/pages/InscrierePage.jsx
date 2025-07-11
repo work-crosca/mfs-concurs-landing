@@ -77,7 +77,7 @@ export default function InscrierePage() {
         body: data
       });
 
-      setToast({ type: "success", message: "Trimis pe Telegram cu succes!" });
+      setToast({ type: "success", message: "Trimis cu succes!" });
       setFormData({ nickname: "", email: "", category: "", description: "", file: null });
       setAgree(false);
     } catch (err) {
