@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import "../styles/HeroSection.css";
+import { FiChevronDown } from "react-icons/fi";
 import heroCard from "../assets/promo.png?w=800&format=webp&as=src";
 
 export default function HeroSection() {
@@ -27,6 +28,11 @@ export default function HeroSection() {
             {t("hero.cta")}
           </button>
         </div>
+      </div>
+
+      {/* Săgeată scroll jos */}
+      <div className="scroll-down">
+        <FiChevronDown size={40} />
       </div>
     </section>
   );

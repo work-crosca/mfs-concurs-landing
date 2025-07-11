@@ -41,5 +41,24 @@
     "email": "Email",
     "selectCategory": "Selectează categoria",
     "submit": "Trimite"
+  },
+  "voting": {
+    "period": "10 – 19 august:",
+    "title": "Votul e în mâinile publicului!",
+    "text1": "Poți vota un singur design per categorie.",
+    "text2": "Dar votul este posibil în toate categoriile.",
+    "text3": "Susține-i pe cei care inspiră — sau… pe tine!",
+    "text4": "Toată lumea va putea vota designul favorit aici:",
+    "cta": "Votează acum"
+  },
+  "categories": {
+    "title": "De ce merită să ne alegi pe noi",
+    "subtitle": "Între 15 iulie și 10 august, ai mână liberă să creezi designul tău pentru Moldcell Visa Card. Alege una sau mai multe categorii și lasă-ți imaginația să vorbească pentru tine:",
+    "sport": "Sport & Active Lifestyle",
+    "digital": "Digital & Urban Vibes",
+    "traditions": "Tradiții & Rădăcini Naționale",
+    "nature": "Nature",
+    "freestyle": "Freestyle",
+    "note": "Fiecare categorie are un loc de onoare pentru un singur câștigător. Poate fi al tău! Vezi o scurtă explicație pentru categorii – ca să-ți fie mai ușor să alegi direcția potrivită."
   }
 }

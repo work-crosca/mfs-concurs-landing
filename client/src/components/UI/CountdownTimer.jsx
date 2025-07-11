@@ -10,7 +10,14 @@ export default function CountdownTimer({ targetDate }) {
   useEffect(() => {
     const timer = setInterval(() => {
       const now = new Date();
-      const diff = new Date(targetDate) - now;
+      const target = new Date(targetDate);
+
+      if (isNaN(target)) {
+        setTimeLeft({ days: "00", hours: "00", minutes: "00", seconds: "00" });
+        return;
+      }
+
+      const diff = target - now;
 
       if (diff <= 0) {
         clearInterval(timer);
