@@ -4,9 +4,10 @@
   box-sizing: border-box;
   align-items: center;
   min-height: 100vh;
+  height: auto;
   background: radial-gradient(circle at center, #333 0%, #000 100%);
   color: #111;
-  padding: 3rem 1rem;
+  padding: 3rem 1rem 5rem 1rem;
 }
 
 .hero-content {
@@ -94,7 +95,7 @@
 
 .scroll-down {
   position: absolute;
-  bottom: 20px;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   color: #ccc;
