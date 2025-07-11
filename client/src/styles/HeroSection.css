@@ -104,7 +104,7 @@
   transform: translateX(-50%);
   font-size: 2rem;
   color: #fff;
-  animation: bounce 2s infinite;
+  /* animation: bounce 2s infinite; */
 }
 
 @keyframes bounce {
@@ -113,7 +113,7 @@
   60% { transform: translateX(-50%) translateY(-5px); }
 }
 
-/* Pe mobil, mută mai jos */
+/* */
 @media (max-width: 768px) {
   .scroll-down-arrow {
     bottom: 10px;

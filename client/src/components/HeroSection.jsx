@@ -1,7 +1,8 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import "../styles/HeroSection.css";
+import { motion } from "framer-motion";
 import { FiChevronDown } from "react-icons/fi";
+import "../styles/HeroSection.css";
 import heroCard from "../assets/promo.png?w=800&format=webp&as=src";
 
 export default function HeroSection() {
@@ -9,7 +10,12 @@ export default function HeroSection() {
 
   return (
     <section className="hero">
-      <div className="hero-content">
+      <motion.div
+        className="hero-content"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
         <div className="hero-content-left">
           <img src={heroCard} alt="Moldcell Visa" />
         </div>
@@ -28,12 +34,16 @@ export default function HeroSection() {
             {t("hero.cta")}
           </button>
         </div>
-      </div>
+      </motion.div>
 
       {/* Săgeată scroll jos */}
-      <div className="scroll-down-arrow">
+      <motion.div
+        className="scroll-down-arrow"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+      >
         <FiChevronDown size={40} />
-      </div>
+      </motion.div>
     </section>
   );
 }

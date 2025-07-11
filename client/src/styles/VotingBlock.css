@@ -64,6 +64,7 @@
 @media (max-width: 600px) {
   .voting-block{
     flex-direction: column-reverse;
+    gap: 1rem;
   }
 
   .voting-left h2{
