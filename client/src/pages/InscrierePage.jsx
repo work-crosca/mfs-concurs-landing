@@ -17,8 +17,6 @@ export default function InscrierePage() {
   const [toast, setToast] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const BOT_TOKEN = import.meta.env.VITE_TELEGRAM_TOKEN;
-  const CHAT_ID = import.meta.env.VITE_TELEGRAM_CHAT_ID;
   const fileInputRef = useRef(null);
 
   const handleChange = (e) => {
@@ -68,15 +66,13 @@ export default function InscrierePage() {
       const renamedFile = new File([formData.file], newFileName, { type: formData.file.type });
 
       const data = new FormData();
-      data.append("chat_id", CHAT_ID);
-      data.append("document", renamedFile);
-      data.append("caption", `📥 Nouă înscriere:
-👤 Nickname: ${formData.nickname}
-✉️ Email: ${formData.email}
-🎨 Categoria: ${formData.category}
-📝 Descriere: ${formData.description}`);
+      data.append("nickname", formData.nickname);
+      data.append("email", formData.email);
+      data.append("category", formData.category);
+      data.append("description", formData.description);
+      data.append("file", renamedFile);
 
-      await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendDocument`, {
+      await fetch("https://mfs-concurs-back.onrender.com/api/upload", {
         method: "POST",
         body: data
       });
@@ -94,9 +90,9 @@ export default function InscrierePage() {
 
   function slugify(str) {
     return str
-      .normalize("NFD")                   // elimină diacritice
+      .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
-      .replace(/\s+/g, "_")               // spații în _
+      .replace(/\s+/g, "_")
       .toLowerCase();
   }
 
