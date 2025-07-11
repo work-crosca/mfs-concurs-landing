@@ -13,8 +13,8 @@
  }
  
  .about-card-image {
-   flex: 1 1 400px;
-   max-width: 500px;
+   max-width: 100%;
+   width: 500px;
    display: flex;
    justify-content: center;
    align-items: center;
@@ -51,6 +51,7 @@
    .about-card-container {
      flex-direction: column;
      text-align: center;
+     gap: 1rem;
    }
  
    .about-card-text {
