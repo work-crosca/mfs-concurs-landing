@@ -63,9 +63,13 @@ export default function InscrierePage() {
     try {
       setLoading(true);
 
+      // redenumește fișierul PNG
+      const newFileName = slugify(formData.nickname) + ".png";
+      const renamedFile = new File([formData.file], newFileName, { type: formData.file.type });
+
       const data = new FormData();
       data.append("chat_id", CHAT_ID);
-      data.append("document", formData.file);
+      data.append("document", renamedFile);
       data.append("caption", `📥 Nouă înscriere:
 👤 Nickname: ${formData.nickname}
 ✉️ Email: ${formData.email}
@@ -87,6 +91,14 @@ export default function InscrierePage() {
       setLoading(false);
     }
   };
+
+  function slugify(str) {
+    return str
+      .normalize("NFD")                   // elimină diacritice
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/\s+/g, "_")               // spații în _
+      .toLowerCase();
+  }
 
   return (
     <div className="inscriere-page">
