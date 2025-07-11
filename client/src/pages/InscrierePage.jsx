@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { FaSpinner, FaUpload } from "react-icons/fa";
 import "../styles/InscrierePage.css";
+import overlayDark from "../assets/shablon/VISA-shablon-dark.png";
+import overlayLight from "../assets/shablon/VISA-shablon-light.png";
 
 export default function InscrierePage() {
   const { t } = useTranslation();
@@ -11,11 +13,13 @@ export default function InscrierePage() {
     email: "",
     category: "",
     description: "",
-    file: null
+    file: null,
   });
+  const [previewUrl, setPreviewUrl] = useState(null);
   const [agree, setAgree] = useState(false);
   const [toast, setToast] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   const fileInputRef = useRef(null);
 
@@ -31,6 +35,7 @@ export default function InscrierePage() {
       return;
     }
     setFormData({ ...formData, file });
+    setPreviewUrl(URL.createObjectURL(file));
   };
 
   const handleFileDrop = (e) => {
@@ -44,7 +49,10 @@ export default function InscrierePage() {
     e.preventDefault();
 
     if (!agree) {
-      setToast({ type: "error", message: "Trebuie să fii de acord cu condițiile!" });
+      setToast({
+        type: "error",
+        message: "Trebuie să fii de acord cu condițiile!",
+      });
       return;
     }
 
@@ -53,17 +61,13 @@ export default function InscrierePage() {
       return;
     }
 
-    if (formData.file && formData.file.type !== "image/png") {
-      setToast({ type: "error", message: "Fișierul trebuie să fie PNG!" });
-      return;
-    }
-
     try {
       setLoading(true);
 
-      // redenumește fișierul PNG
       const newFileName = slugify(formData.nickname) + ".png";
-      const renamedFile = new File([formData.file], newFileName, { type: formData.file.type });
+      const renamedFile = new File([formData.file], newFileName, {
+        type: formData.file.type,
+      });
 
       const data = new FormData();
       data.append("nickname", formData.nickname);
@@ -74,11 +78,18 @@ export default function InscrierePage() {
 
       await fetch("https://mfs-concurs-back.onrender.com/api/upload", {
         method: "POST",
-        body: data
+        body: data,
       });
 
       setToast({ type: "success", message: "Trimis cu succes!" });
-      setFormData({ nickname: "", email: "", category: "", description: "", file: null });
+      setFormData({
+        nickname: "",
+        email: "",
+        category: "",
+        description: "",
+        file: null,
+      });
+      setPreviewUrl(null);
       setAgree(false);
     } catch (err) {
       console.error(err);
@@ -97,7 +108,7 @@ export default function InscrierePage() {
   }
 
   return (
-    <div className="inscriere-page">
+    <div className={`inscriere-page ${darkMode ? "dark" : "light"}`}>
       <motion.section
         className="inscriere-container"
         initial={{ opacity: 0, y: 20 }}
@@ -167,6 +178,34 @@ export default function InscrierePage() {
             required
           />
 
+          {/* Preview cu overlay */}
+          {previewUrl && (
+            <div className="image-preview-wrapper">
+              <img
+                src={previewUrl}
+                alt="Preview user upload"
+                className="user-preview"
+              />
+              <img
+                src={darkMode ? overlayDark : overlayLight}
+                alt="Overlay"
+                className="overlay-preview"
+              />
+            </div>
+          )}
+          {/* Toggle pentru light/dark preview */}
+          <div className="toggle-mode">
+            <label className="switch">
+              <input
+                type="checkbox"
+                checked={!darkMode}
+                onChange={() => setDarkMode(!darkMode)}
+              />
+              <span className="slider"></span>
+            </label>
+            <span>{darkMode ? "Dark Preview" : "Light Preview"}</span>
+          </div>
+
           <label className="checkbox-agreement">
             <input
               type="checkbox"
@@ -178,16 +217,16 @@ export default function InscrierePage() {
           </label>
 
           <button type="submit" disabled={loading}>
-            {loading ? <FaSpinner className="spinner" /> : t("inscriere.submit")}
+            {loading ? (
+              <FaSpinner className="spinner" />
+            ) : (
+              t("inscriere.submit")
+            )}
           </button>
         </form>
       </motion.section>
 
-      {toast && (
-        <div className={`toast ${toast.type}`}>
-          {toast.message}
-        </div>
-      )}
+      {toast && <div className={`toast ${toast.type}`}>{toast.message}</div>}
     </div>
   );
 }
