@@ -1,6 +1,7 @@
 .hero {
   display: flex;
   justify-content: center;
+  box-sizing: border-box;
   align-items: center;
   text-align: center;
   min-height: 100vh;
@@ -11,6 +12,7 @@
 
 .hero-content {
   max-width: 800px;
+  height: auto;
 }
 
 .hero-subtitle {
@@ -77,3 +79,4 @@
 .hero-partners span:hover {
   opacity: 1;
 }
+

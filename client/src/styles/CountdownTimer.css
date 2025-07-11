@@ -1,0 +1,47 @@
+.timer-container {
+   display: flex;
+   justify-content: center;
+   align-items: flex-start;
+   gap: 2rem;
+   margin-bottom: 2rem;
+ }
+ 
+ .timer-item {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+ }
+ 
+ .timer-value {
+   font-size: 4rem;
+   font-weight: 700;
+   line-height: 1;
+   color: #333;
+ }
+ 
+ .timer-label {
+   font-size: 0.5rem;
+   color: #555;
+   margin-top: 0.5rem;
+ }
+ 
+ .timer-separator {
+   font-size: 4rem;
+   font-weight: 700;
+   line-height: 1;
+   color: #333;
+ }
+
+ @media (max-width: 600px) {
+   .timer-value, .timer-separator {
+     font-size: 2.5rem;
+   }
+   .timer-label {
+     font-size: 0.85rem;
+   }
+
+   .timer-container {
+      gap: 0.5rem;
+    }
+    
+ }

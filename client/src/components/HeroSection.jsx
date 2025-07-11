@@ -1,5 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import CountdownTimer from "./UI/CountdownTimer";
 import "../styles/HeroSection.css";
 
 export default function HeroSection() {
@@ -8,6 +9,7 @@ export default function HeroSection() {
   return (
     <section className="hero">
       <div className="hero-content">
+        <CountdownTimer targetDate="2025-07-20T23:59:59" />
         <h1>{t("hero.title")}</h1>
         <p>{t("hero.subtitle")}</p>
         <a href="/inscriere" className="hero-button">
