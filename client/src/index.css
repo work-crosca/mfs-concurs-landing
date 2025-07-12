@@ -72,6 +72,10 @@ p {
   p {
     font-size: 1.2rem;
   }
+
+  .block-01.reverse {
+    flex-direction: column-reverse!important;
+  }
 }
 
 
