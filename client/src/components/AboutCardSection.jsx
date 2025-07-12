@@ -23,9 +23,9 @@ const AboutCardSection = () => {
 
   return (
     <>
-      <section className="about-card-container" ref={containerRef}>
+      <section className="block-01" ref={containerRef}>
         <motion.div
-          className="about-card-left"
+          className="col"
           ref={imageRef}
           initial={{ opacity: 0, scale: 0.8 }}
           animate={imageInView ? { opacity: 1, scale: 1.1 } : {}}
@@ -33,6 +33,7 @@ const AboutCardSection = () => {
         >
           <motion.img
             src={cardImage}
+            className="large"
             alt="Moldcell Visa Card"
             loading="lazy"
             style={{
@@ -44,7 +45,7 @@ const AboutCardSection = () => {
         </motion.div>
 
         <motion.div
-          className="about-card-right"
+          className="col"
           ref={textRef}
           initial={{ opacity: 0, y: 40 }}
           animate={textInView ? { opacity: 1, y: 0 } : {}}

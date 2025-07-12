@@ -15,10 +15,10 @@ export default function VotingBlock() {
 
   return (
     <>
-      <CountdownTimer  targetDate="2025-08-09T23:59:59Z" />
-      <section className="voting-block">
+      <CountdownTimer targetDate="2025-08-09T23:59:59Z" />
+      <section className="block-01">
         <motion.div
-          className="voting-left"
+          className="col"
           ref={textRef}
           initial={{ opacity: 0, x: -50 }}
           animate={textInView ? { opacity: 1, x: 0 } : {}}
@@ -31,17 +31,18 @@ export default function VotingBlock() {
           <p>{t("voting.text1")}</p>
           <p>{t("voting.text2")}</p>
           <p>{t("voting.text3")}</p>
-          <p>{t("voting.text4")}</p>
+          <p style={{marginTop: "2rem"}}>{t("voting.text4")}</p>
         </motion.div>
 
         <motion.div
-          className="voting-right"
+          className="col voting"
           ref={imageRef}
           initial={{ opacity: 0, x: 50 }}
           animate={imageInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <motion.img
+            className="large"
             src={hammerImage}
             alt="Vot ciocan"
             animate={{ rotate: [-2, 2, -2] }}

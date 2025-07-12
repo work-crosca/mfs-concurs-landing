@@ -2,11 +2,5 @@ body{
   box-sizing: border-box;
 }
 
-h2 {
-  font-size: 4rem;
-  background: linear-gradient(90deg, #990ae3, #ff28b1);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  line-height: 4rem;
-}
+
+

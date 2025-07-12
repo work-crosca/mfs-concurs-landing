@@ -60,5 +60,13 @@
     "nature": "Nature",
     "freestyle": "Freestyle",
     "note": "Fiecare categorie are un loc de onoare pentru un singur câștigător. Poate fi al tău! Vezi o scurtă explicație pentru categorii – ca să-ți fie mai ușor să alegi direcția potrivită."
+  },
+  "prizes": {
+    "amount": "100 000 lei",
+    "subtitle": "x5 premii",
+    "line1": "20 000 lei – premiu per 1 câștigător din fiecare categorie",
+    "line2": "Designul tău va apărea în aplicația moldcell money",
+    "line3": "Prezentare oficială la un eveniment exclusiv cu influenceri & presă",
+    "line4": "Tu – în centrul atenției, la ArtCor, pe 22 august"
   }
 }
