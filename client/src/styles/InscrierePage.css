@@ -297,3 +297,7 @@
   10%, 90% { transform: translate(-50%, 0); opacity: 0.95; }
   100% { transform: translate(-50%, -20px); opacity: 0; }
 }
+
+.checkbox-agreement a{
+  color: var(--light-purple);
+}
