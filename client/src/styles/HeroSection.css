@@ -9,7 +9,7 @@
   height: auto;
   background: radial-gradient(circle at center, #333 0%, #000 100%);
   color: #111;
-  padding: 0;
+  padding-bottom: 3rem;
   position: relative;
 }
 

@@ -21,7 +21,7 @@ const Apply = () => {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
   return (
-    <section className="block-01" ref={containerRef}>
+    <section className="block-01 reverse" ref={containerRef}>
       <motion.div
         className="col"
         ref={textRef}
