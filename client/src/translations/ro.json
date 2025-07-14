@@ -31,14 +31,6 @@
     "q4": "Cum activez/dezactivez autoprelungirea unei opțiuni?",
     "a4": "Activarea sau dezactivarea autoprelungirii se face simplu, folosind toggle (butonul de activare/dezactivare) din aplicație, direct din secțiunea opțiunii respective."
   },
-
-  "inscriere": {
-    "title": "Înscrie-te în concurs",
-    "nickname": "Nickname",
-    "email": "Email",
-    "selectCategory": "Selectează categoria",
-    "submit": "Trimite"
-  },
   "voting": {
     "period": "10 – 19 august:",
     "title": "Votul e în mâinile publicului!",
@@ -86,12 +78,14 @@
   },
   "inscriere": {
     "title": "Înscrie-te în concurs",
-    "nickname": "Nume artist / nickname",
+    "nickname": "Nume artist",
     "email": "Email",
     "selectCategory": "Alege categoria",
-    "categoryLogo": "Logo",
-    "categoryPoster": "Poster",
-    "categoryCard": "Design Card",
+    "categorySport": "Sport & Active Lifestyle",
+    "categoryDigital": "Digital & Urban Vibes",
+    "categoryTraditions": "Moldova – My Love",
+    "categoryNature": "Eco Pulse",
+    "categoryFreestyle": "Freestyle",
     "descriptionPlaceholder": "Scurtă descriere (max 150 caractere)",
     "dropzoneDefault": "Trage fișierul PNG aici sau click pentru a alege",
     "dropzoneSelected": "Selectat: {{fileName}}",

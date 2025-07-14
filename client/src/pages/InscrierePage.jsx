@@ -196,9 +196,17 @@ export default function InscrierePage() {
                 required
               >
                 <option value="">{t("inscriere.selectCategory")}</option>
-                <option value="logo">{t("inscriere.categoryLogo")}</option>
-                <option value="poster">{t("inscriere.categoryPoster")}</option>
-                <option value="card">{t("inscriere.categoryCard")}</option>
+                <option value="sport">{t("inscriere.categorySport")}</option>
+                <option value="digital">
+                  {t("inscriere.categoryDigital")}
+                </option>
+                <option value="traditions">
+                  {t("inscriere.categoryTraditions")}
+                </option>
+                <option value="nature">{t("inscriere.categoryNature")}</option>
+                <option value="freestyle">
+                  {t("inscriere.categoryFreestyle")}
+                </option>
               </select>
               <textarea
                 name="description"
