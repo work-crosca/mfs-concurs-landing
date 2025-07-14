@@ -1,0 +1,32 @@
+.steps-list {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+}
+
+.steps-list li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.steps-list img {
+  width: 48px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.link-regulament {
+  color: var(--base-violet, #990ae3);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+small {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  color: #e5e5e5;
+}

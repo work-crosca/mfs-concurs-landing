@@ -10,12 +10,14 @@ import heroCard3 from "../assets/promo3.png?w=800&format=webp&as=src";
 import heroCard4 from "../assets/promo4.png?w=800&format=webp&as=src";
 import heroCard5 from "../assets/promo5.png?w=800&format=webp&as=src";
 import heroCard6 from "../assets/promo6.png?w=800&format=webp&as=src";
+import heroCard8 from "../assets/promo8.png?w=800&format=webp&as=src";
+import heroCard9 from "../assets/promo9.png?w=800&format=webp&as=src";
 
 export default function HeroSection() {
   const { t } = useTranslation();
 
   // Alegi random la fiecare render
-  const images = [heroCard1, heroCard2, heroCard3, heroCard4, heroCard5, heroCard6];
+  const images = [heroCard1, heroCard2, heroCard3, heroCard4, heroCard5, heroCard6, heroCard8, heroCard9];
   const heroCard = images[Math.floor(Math.random() * images.length)];
 
   return (

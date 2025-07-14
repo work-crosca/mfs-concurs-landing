@@ -3,6 +3,10 @@ import { useTranslation } from "react-i18next";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import "../styles/AboutCardSection.css";
 import cardImage from "../assets/home/card.png?w=800&format=webp&as=src";
+import downloadIcon from "../assets/home/list/download.svg";
+import designIcon from "../assets/home/list/design.svg";
+import uploadIcon from "../assets/home/list/upload.svg";
+import storyIcon from "../assets/home/list/story.svg";
 
 const AboutCardSection = () => {
   const { t } = useTranslation();
@@ -21,6 +25,13 @@ const AboutCardSection = () => {
   });
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
+  const steps = [
+    { icon: downloadIcon, text: t("about.step1") },
+    { icon: designIcon, text: t("about.step2") },
+    { icon: uploadIcon, text: t("about.step3") },
+    { icon: storyIcon, text: t("about.step4") },
+  ];
+
   return (
     <>
       <section className="block-01" ref={containerRef}>
@@ -38,7 +49,7 @@ const AboutCardSection = () => {
             loading="lazy"
             style={{
               scale,
-              y: ["0%", "-2%", "0%", "2%", "0%"], // plutire
+              y: ["0%", "-2%", "0%", "2%", "0%"],
               transition: "y 4s ease-in-out infinite",
             }}
           />
@@ -52,7 +63,23 @@ const AboutCardSection = () => {
           transition={{ duration: 0.7 }}
         >
           <h2>{t("about.title")}</h2>
-          <p>{t("about.description")}</p>
+
+          <ul className="steps-list">
+            {steps.map((step, index) => (
+              <li key={index}>
+                <img src={step.icon} alt={`Step ${index + 1}`} />
+                <p>{step.text}</p>
+              </li>
+            ))}
+          </ul>
+
+          <small>{t("about.criteria")}</small>
+
+          <div style={{ marginTop: "1rem" }}>
+            <a href="/link-catre-regulament" className="link-regulament">
+              {t("about.rulesLink")}
+            </a>
+          </div>
         </motion.div>
       </section>
     </>

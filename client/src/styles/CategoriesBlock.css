@@ -9,9 +9,9 @@
 .categories-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: 16px;
   justify-content: center;
-  margin: 1rem auto;
+  margin: 2rem auto;
 }
 
 /* Toate itemele au dimensiune de bază */
@@ -20,10 +20,13 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  flex: 0 1 140px; 
-  color: var(--base-color);
-  font-size: 1rem;
-  line-height: 1.2rem;
+  flex: 0 1 calc(48% - 16px); 
+  color: var(--light-purple);
+  --font-item-size: 18px;
+  font-size: var(--font-item-size);
+  font-weight: 700;
+  letter-spacing: calc((var(--font-item-size) / 100) * -1.5px );
+  line-height: 100%;
 }
 
 .category-icon {
@@ -40,14 +43,19 @@
   justify-content: center;
 }
 
+
 /* === TABLET === */
 @media (min-width: 768px) and (max-width: 1023px) {
   .category-item {
-    flex: 0 1 calc(33.333% - 24px);
+    flex: 0 1 calc(33.333% - 16px);
   }
   .categories-grid > :nth-child(5) {
-    flex-basis: calc(33.333% - 24px);
+    flex-basis: calc(33.333% - 16px);
     justify-content: center;
+  }
+
+  .category-icon{
+    width: 56px;
   }
 }
 
@@ -57,11 +65,12 @@
 */
 @media (min-width: 1024px) {
   .category-item {
-    flex: 0 1 calc(33.333% - 24px);
+    flex: 0 1 calc(33.333% - 16px);
+     --font-item-size: 36px;
   }
   .categories-grid > :nth-child(4),
   .categories-grid > :nth-child(5) {
-    flex: 0 1 calc(50% - 24px);
+    flex: 0 1 calc(50% - 16px);
     justify-content: center;
   }
 }

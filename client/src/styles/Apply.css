@@ -1,0 +1,19 @@
+.apply-btn{
+   border-radius: 2rem;
+   background: #cc3cff;
+   text-transform: uppercase;
+   text-decoration: none;
+   color: #fff;
+   padding: 1rem 2rem;
+   font-size: 1rem;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   border: none;
+   margin-top: 1rem;
+ }
+ 
+.apply-btn:hover {
+   transform: translateY(-5px);
+   background-color: var(--base-color);
+ }
+ 

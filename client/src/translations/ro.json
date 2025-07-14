@@ -19,10 +19,14 @@
     "text": "Tu creezi."
   },
   "about": {
-    "title": "Ce este Moldcell Visa Card?",
-    "description": "Este un card virtual emis instant direct din aplicația Moldcell Money, fără taxe de emitere sau întreținere. Îl folosești pentru cumpărături online, plăți contactless cu telefonul și primești cashback promoțional. Totul este simplu, sigur și direct din telefonul tău."
+    "title": "Cum participi?",
+    "step1": "Descarcă template-ul de design (ai grijă la cerințele tehnice);",
+    "step2": "Creează designul tău în stilul care te definește;",
+    "step3": "Încarcă propunerea până pe 10 august;",
+    "step4": "Spune-ți povestea prin design. Noi o facem realitate.",
+    "criteria": "(!) Criterii de jurizare: Creativitate & originalitate; Claritatea mesajului vizual; Relevanță pentru brandul Moldcell și Moldcell Visa Card; Ușurința de aplicare în format digital. Poți trimite maximum 3 propuneri. Creațiile trebuie să fie originale. Formatele acceptate: PNG, JPG, PDF sau Figma link.",
+    "rulesLink": "Cerințele tehnice & Regulamentul oficial"
   },
-
   "faq": {
     "title": "Întrebări frecvente",
     "q1": "Ce este aplicația my moldcell?",
@@ -68,5 +72,13 @@
     "line2": "Designul tău va apărea în aplicația moldcell money",
     "line3": "Prezentare oficială la un eveniment exclusiv cu influenceri & presă",
     "line4": "Tu – în centrul atenției, la ArtCor, pe 22 august"
+  },
+  "apply": {
+    "title": "Moldcell Visa Card – mai mult decât un card",
+    "line1": "Este libertatea ta de exprimare, într-un format digital.",
+    "line2": "Este vocea unei generații care creează, se implică și rămâne conectată aici, acasă.",
+    "line3": "Tu creezi. Noi FACEM.",
+    "line4": "Participă acum și pune-ți stilul în circulație.",
+    "button": "Aplică la concurs aici."
   }
 }

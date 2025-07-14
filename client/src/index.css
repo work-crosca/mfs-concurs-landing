@@ -2,6 +2,7 @@
   --base-violet: #990ae3;
   --gradiennt-01: linear-gradient(90deg, #990ae3, #ff28b1);
   --base-color: var(--base-violet);
+  --light-purple: #CC3CFF;
 }
 
 /* Font global inspirat de Apple / Google */

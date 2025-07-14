@@ -4,7 +4,7 @@ import i18n from "i18next";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import LanguageSwitcher from "./UI/LanguageSwitcher";
-import logo from "../assets/logo.png?w=136&format=webp&as=src";
+import logo from "../assets/logo.png?w=272&format=webp&as=src";
 
 export default function Header() {
   const { t } = useTranslation();
