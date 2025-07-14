@@ -2,14 +2,18 @@ import React, { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { motion, useInView } from "framer-motion";
 import "../styles/CategoriesBlock.css";
-import heartIcon from "../assets/home/heart.png?w=100&format=webp&as=src";
+import heartIcon1 from "../assets/home/categories/iCons-facem_01.svg";
+import heartIcon2 from "../assets/home/categories/iCons-facem_02.svg";
+import heartIcon3 from "../assets/home/categories/iCons-facem_03.svg";
+import heartIcon4 from "../assets/home/categories/iCons-facem_04.svg";
+import heartIcon5 from "../assets/home/categories/iCons-facem_05.svg";
 
 const categories = [
-  { id: 1, icon: heartIcon, labelKey: "categories.sport" },
-  { id: 2, icon: heartIcon, labelKey: "categories.digital" },
-  { id: 3, icon: heartIcon, labelKey: "categories.traditions" },
-  { id: 4, icon: heartIcon, labelKey: "categories.nature" },
-  { id: 5, icon: heartIcon, labelKey: "categories.freestyle" },
+  { id: 1, icon: heartIcon1, labelKey: "categories.sport" },
+  { id: 2, icon: heartIcon2, labelKey: "categories.digital" },
+  { id: 3, icon: heartIcon3, labelKey: "categories.traditions" },
+  { id: 4, icon: heartIcon4, labelKey: "categories.nature" },
+  { id: 5, icon: heartIcon5, labelKey: "categories.freestyle" },
 ];
 
 export default function CategoriesBlock() {

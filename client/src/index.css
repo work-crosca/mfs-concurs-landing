@@ -76,14 +76,11 @@ p {
     flex-direction: column-reverse!important;
   }
 }
-
-
  
 img.large {
   width: 100%;
   height: auto;
 }
-
 
 h2.light{
   width: 100%;
