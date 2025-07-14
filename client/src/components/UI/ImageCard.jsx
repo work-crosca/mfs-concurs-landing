@@ -1,0 +1,20 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import "../../styles/ImageCard.css";
+
+export default function ImageCard({ img, API_URL }) {
+  return (
+    <Link to={`/image/${img._id}`}>
+      <div className="image-card">
+        <img
+          src={
+            img.fileUrl.startsWith("http")
+              ? img.fileUrl
+              : `${API_URL}${img.fileUrl}`
+          }
+          alt={img.description}
+        />
+      </div>
+    </Link>
+  );
+}

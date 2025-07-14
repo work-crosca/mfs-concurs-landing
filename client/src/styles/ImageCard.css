@@ -1,0 +1,27 @@
+.image-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1564 / 999;
+  overflow: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+}
+
+.image-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.3s ease;
+}
+
+.image-card:hover {
+  border: 2px solid var(--light-purple);
+}
+
+.image-card:hover img{
+   scale: 1.1;
+}

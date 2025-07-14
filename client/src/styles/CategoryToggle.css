@@ -1,0 +1,37 @@
+.toggle-container {
+   display: inline-flex;
+   background: #111;
+   gap: 0.5rem;
+   border-radius: 9999px;
+   padding: 0.5rem;
+ 
+   /* pentru mobile scroll */
+   overflow-x: auto;
+   -webkit-overflow-scrolling: touch;
+ }
+ 
+ .toggle-container::-webkit-scrollbar {
+   display: none; 
+ }
+ 
+ .toggle-button {
+   flex: 0 0 auto;
+   border: none;
+   background: transparent;
+   color: #e5e5e5;
+   font-weight: 600;
+   padding: 1rem 2rem;
+   border-radius: 9999px;
+   cursor: pointer;
+   transition: all 0.3s ease;
+ }
+ 
+ .toggle-button.active {
+   background: var(--light-purple);
+   color: #fff;
+   font-weight: 600;
+ }
+ 
+ .toggle-button:hover:not(.active) {
+   background: rgba(0, 0, 0, 0.2);
+ }
