@@ -29,7 +29,7 @@ const Apply = () => {
         animate={textInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.7 }}
       >
-        <h2 style={{ marginBottom: 0 }}>{t("apply.title")}</h2>
+        <h2>{t("apply.title")}</h2>
         <p>{t("apply.line1")}</p>
         <p>{t("apply.line2")}</p>
         <p style={{marginTop: "1rem"}}>{t("apply.line3")}</p>
