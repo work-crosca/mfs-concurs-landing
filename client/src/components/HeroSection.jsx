@@ -3,10 +3,21 @@ import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { FiChevronDown } from "react-icons/fi";
 import "../styles/HeroSection.css";
-import heroCard from "../assets/promo.png?w=800&format=webp&as=src";
+
+// Importi toate imaginile posibile
+import heroCard1 from "../assets/promo1.png?w=800&format=webp&as=src";
+import heroCard2 from "../assets/promo2.png?w=800&format=webp&as=src";
+import heroCard3 from "../assets/promo3.png?w=800&format=webp&as=src";
+import heroCard4 from "../assets/promo4.png?w=800&format=webp&as=src";
+import heroCard5 from "../assets/promo5.png?w=800&format=webp&as=src";
+import heroCard6 from "../assets/promo6.png?w=800&format=webp&as=src";
 
 export default function HeroSection() {
   const { t } = useTranslation();
+
+  // Alegi random la fiecare render
+  const images = [heroCard1, heroCard2, heroCard3, heroCard4, heroCard5, heroCard6];
+  const heroCard = images[Math.floor(Math.random() * images.length)];
 
   return (
     <section className="hero">
@@ -36,7 +47,6 @@ export default function HeroSection() {
         </div>
       </motion.div>
 
-      {/* Săgeată scroll jos */}
       <motion.div
         className="scroll-down-arrow"
         animate={{ y: [0, 10, 0] }}
