@@ -1,0 +1,58 @@
+.footer {
+   background: #111;
+   width: 100%;
+ }
+ 
+ .footer-content{
+   width: 1200px;
+   max-width: 100%;
+   margin: 0 auto;
+   display: grid;
+   gap: 2rem;
+   padding: 2rem;
+   color: #fff;
+ }
+
+ .footer-column h4 {
+   margin-bottom: 1rem;
+   font-size: 1.1rem;
+   color: #990ae3; /* accent violet */
+ }
+ 
+ .footer-column ul {
+   list-style: none;
+   padding: 0;
+ }
+ 
+ .footer-column li {
+   margin-bottom: 0.5rem;
+ }
+ 
+ .footer-column a {
+   color: #ccc;
+   text-decoration: none;
+   transition: color 0.3s;
+ }
+ 
+ .footer-column a:hover {
+   color: #fff;
+ }
+ 
+ /* Mobile: 1 coloană */
+ .footer {
+   grid-template-columns: 1fr;
+ }
+ 
+ /* Tablet: 2 coloane */
+ @media (min-width: 600px) {
+   .footer-content {
+     grid-template-columns: repeat(2, 1fr);
+   }
+ }
+ 
+ /* Desktop: 4 coloane */
+ @media (min-width: 992px) {
+   .footer-content {
+     grid-template-columns: repeat(4, 1fr);
+   }
+ }

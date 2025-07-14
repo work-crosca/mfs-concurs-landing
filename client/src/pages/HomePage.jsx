@@ -8,6 +8,7 @@ import CategoriesBlock from "../components/CategoriesBlock";
 import AwardBlock from "../components/AwardsBlock";
 import Apply from "../components/Apply";
 import EndDate from "../components/EndDate";
+import Footer from "../components/Footer";
 
 const HomePage = () => {
   return (

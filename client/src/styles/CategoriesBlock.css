@@ -69,17 +69,17 @@
 */
 @media (min-width: 1024px) {
   .category-item {
-    flex: 0 1 calc(33.333% - 36px);
+    flex: 0 1 calc(33.333% - 46px);
      --font-item-size: 36px;
   }
 
   .categories-grid {
-    gap: 36px;
+    gap: 46px;
   }
 
   .categories-grid > :nth-child(4),
   .categories-grid > :nth-child(5) {
-    flex: 0 1 calc(50% - 36px);
+    flex: 0 1 calc(50% - 46px);
     justify-content: center;
   }
 }
