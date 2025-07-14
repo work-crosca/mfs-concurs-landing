@@ -2,6 +2,9 @@
    display: flex;
    justify-content: center;
    padding: 4rem 1rem;
+   width: 100%;
+   max-width: 100vw;
+   box-sizing: border-box;
    align-items: center;
    background: #111111;
 }
