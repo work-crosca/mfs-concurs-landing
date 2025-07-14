@@ -4,6 +4,7 @@ import i18n from "i18next";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import LanguageSwitcher from "./UI/LanguageSwitcher";
+import logo from "../assets/logo.png?w=136&format=webp&as=src";
 
 export default function Header() {
   const { t } = useTranslation();
@@ -20,14 +21,15 @@ export default function Header() {
   return (
     <header className={`header ${scrolled ? "scrolled" : ""}`}>
       <div className="header-left">
-        <div className="navbar-links">
-        </div>
+        <Link to="/" className="logo-link">
+          <img src={logo} alt="Logo" className="logo" />
+        </Link>
       </div>
 
       <nav className="header-right">
         <div className="navbar-links">
-           {/*<Link to="/">{t("header.home")}</Link>
-              <Link to="/inscriere">{t('header.apply')}</Link>*/}
+          {/* <Link to="/">{t("header.home")}</Link>
+          <Link to="/inscriere">{t('header.apply')}</Link> */}
         </div>
 
         <LanguageSwitcher />

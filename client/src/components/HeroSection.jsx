@@ -1,7 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-import { FiChevronDown } from "react-icons/fi";
 import "../styles/HeroSection.css";
 
 // Importi toate imaginile posibile
@@ -47,13 +46,6 @@ export default function HeroSection() {
         </div>
       </motion.div>
 
-      <motion.div
-        className="scroll-down-arrow"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <FiChevronDown size={40} />
-      </motion.div>
     </section>
   );
 }
