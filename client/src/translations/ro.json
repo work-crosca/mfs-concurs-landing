@@ -1,18 +1,11 @@
 {
-  "homepage": {
-    "title": "Concurs Design Visa Card",
-    "welcome": "Bine ai venit! Alege una dintre opțiuni:",
-    "apply": "Înscrie-te la concurs",
-    "vote": "Votează participanții"
-  },
-
   "header": {
     "home": "Acasă",
     "apply": "Participă"
   },
 
   "hero": {
-    "title1": "Noi FACEM!",
+    "title1": "Noi <span>FACEM!</span>",
     "title2": "cardul tău realitate!",
     "subtitle": "Fond de premii 100 000 lei",
     "cta": "Vreau",

@@ -1,5 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { Trans } from "react-i18next";
 import { motion } from "framer-motion";
 import "../styles/HeroSection.css";
 
@@ -17,7 +18,16 @@ export default function HeroSection() {
   const { t } = useTranslation();
 
   // Alegi random la fiecare render
-  const images = [heroCard1, heroCard2, heroCard3, heroCard4, heroCard5, heroCard6, heroCard8, heroCard9];
+  const images = [
+    heroCard1,
+    heroCard2,
+    heroCard3,
+    heroCard4,
+    heroCard5,
+    heroCard6,
+    heroCard8,
+    heroCard9,
+  ];
   const heroCard = images[Math.floor(Math.random() * images.length)];
 
   return (
@@ -34,7 +44,13 @@ export default function HeroSection() {
         <div className="hero-content-right">
           <div className="hero-text">
             <p>{t("hero.text")}</p>
-            <h1>{t("hero.title1")}</h1>
+            <h1>
+              {" "}
+              <Trans
+                i18nKey="hero.title1"
+                components={{ span: <span className="highlight" /> }}
+              />
+            </h1>
             <h1>{t("hero.title2")}</h1>
             <p>{t("hero.subtitle")}</p>
           </div>
@@ -47,7 +63,6 @@ export default function HeroSection() {
           </button>
         </div>
       </motion.div>
-
     </section>
   );
 }
