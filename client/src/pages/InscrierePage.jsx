@@ -6,6 +6,7 @@ import "../styles/InscrierePage.css";
 import overlayDark from "../assets/shablon/VISA-shablon-dark.png?w=800&format=webp&as=src";
 import overlayLight from "../assets/shablon/VISA-shablon-light.png?w=800&format=webp&as=src";
 
+
 export default function InscrierePage() {
   const { t } = useTranslation();
   const [formData, setFormData] = useState({
@@ -71,7 +72,7 @@ export default function InscrierePage() {
       data.append("description", formData.description);
       data.append("file", renamedFile);
 
-      await fetch("https://mfs-concurs-back.onrender.com/api/upload", {
+      await fetch(`${import.meta.env.VITE_API_URL}/api/upload`, {
         method: "POST",
         body: data,
       });

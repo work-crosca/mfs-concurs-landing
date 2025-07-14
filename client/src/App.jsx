@@ -3,7 +3,7 @@ import NavBar from './components/NavBar';
 import HomePage from './pages/HomePage';
 import InscrierePage from './pages/InscrierePage';
 import Footer from './components/Footer';
-// import VotarePage from './pages/VotarePage';
+import Gallery from './pages/Gallery'; 
 
 function App() {
   return (
@@ -12,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/inscriere" element={<InscrierePage />} />
+        <Route path="/gallery" element={<Gallery />} /> {/* ruta pentru galerie */}
         {/*<Route path="/votare" element={<VotarePage />} /> */}
       </Routes>
       <Footer />
