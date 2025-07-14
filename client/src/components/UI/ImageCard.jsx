@@ -5,8 +5,8 @@ import { FaUser } from "react-icons/fa";
 
 export default function ImageCard({ img, API_URL }) {
   return (
-    <Link to={`/image/${img._id}`}>
-      <div className="image-card">
+    <div className="image-card">
+      <Link to={`/image/${img._id}`}>
         <img
           src={
             img.fileUrl.startsWith("http")
@@ -15,11 +15,14 @@ export default function ImageCard({ img, API_URL }) {
           }
           alt={img.description}
         />
-        <div className="author-overlay">
-          <FaUser />
+      </Link>
+      <div className="card-info">
+        <div className="card-author">
+          <FaUser style={{ marginRight: "0.4rem" }} />
           {img.nickname || "Anonim"}
         </div>
+        <div className="card-description">{img.description}</div>
       </div>
-    </Link>
+    </div>
   );
 }
