@@ -47,7 +47,6 @@ export default function InscrierePage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!agree) {
       setToast({
         type: "error",
@@ -55,20 +54,16 @@ export default function InscrierePage() {
       });
       return;
     }
-
     if (!formData.file) {
       setToast({ type: "error", message: "Trebuie să încarci un fișier PNG!" });
       return;
     }
-
     try {
       setLoading(true);
-
       const newFileName = slugify(formData.nickname) + ".png";
       const renamedFile = new File([formData.file], newFileName, {
         type: formData.file.type,
       });
-
       const data = new FormData();
       data.append("nickname", formData.nickname);
       data.append("email", formData.email);
@@ -140,13 +135,13 @@ export default function InscrierePage() {
             required
           >
             <option value="">{t("inscriere.selectCategory")}</option>
-            <option value="logo">Logo</option>
-            <option value="poster">Poster</option>
-            <option value="card">Card Design</option>
+            <option value="logo">{t("inscriere.categoryLogo")}</option>
+            <option value="poster">{t("inscriere.categoryPoster")}</option>
+            <option value="card">{t("inscriere.categoryCard")}</option>
           </select>
           <textarea
             name="description"
-            placeholder="Short description (max 150 chars)"
+            placeholder={t("inscriere.descriptionPlaceholder")}
             value={formData.description}
             onChange={handleChange}
             maxLength={150}
@@ -165,8 +160,10 @@ export default function InscrierePage() {
             <FaUpload size={30} />
             <p>
               {formData.file
-                ? `Selectat: ${formData.file.name}`
-                : "Trage fișierul PNG aici sau click pentru a alege"}
+                ? t("inscriere.dropzoneSelected", {
+                    fileName: formData.file.name,
+                  })
+                : t("inscriere.dropzoneDefault")}
             </p>
           </div>
           <input
@@ -178,7 +175,6 @@ export default function InscrierePage() {
             required
           />
 
-          {/* Preview cu overlay */}
           {previewUrl && (
             <div className="image-preview-wrapper">
               <img
@@ -193,7 +189,7 @@ export default function InscrierePage() {
               />
             </div>
           )}
-          {/* Toggle pentru light/dark preview */}
+
           <div className="toggle-mode">
             <label className="switch">
               <input
@@ -203,7 +199,11 @@ export default function InscrierePage() {
               />
               <span className="slider"></span>
             </label>
-            <span>{darkMode ? "Dark Preview" : "Light Preview"}</span>
+            <span>
+              {darkMode
+                ? t("inscriere.previewDark")
+                : t("inscriere.previewLight")}
+            </span>
           </div>
 
           <label className="checkbox-agreement">
@@ -213,7 +213,9 @@ export default function InscrierePage() {
               onChange={(e) => setAgree(e.target.checked)}
               required
             />
-            Confirm că sunt de acord cu <a href="">condițiile de participare</a>
+            <div style={{ display: "inline-block" }}>
+              {t("inscriere.agree")} <a href="">{t("inscriere.conditions")}</a>
+            </div>
           </label>
 
           <button type="submit" disabled={loading}>

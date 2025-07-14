@@ -83,5 +83,22 @@
     "hours": "ORE",
     "minutes": "MINUTE",
     "seconds": "SECUNDE"
+  },
+  "inscriere": {
+    "title": "Înscrie-te în concurs",
+    "nickname": "Nume artist / nickname",
+    "email": "Email",
+    "selectCategory": "Alege categoria",
+    "categoryLogo": "Logo",
+    "categoryPoster": "Poster",
+    "categoryCard": "Design Card",
+    "descriptionPlaceholder": "Scurtă descriere (max 150 caractere)",
+    "dropzoneDefault": "Trage fișierul PNG aici sau click pentru a alege",
+    "dropzoneSelected": "Selectat: {{fileName}}",
+    "previewDark": "Dark Preview",
+    "previewLight": "Light Preview",
+    "agree": "Confirm că sunt de acord cu",
+    "conditions": "condițiile de participare",
+    "submit": "Trimite"
   }
 }

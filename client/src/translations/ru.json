@@ -84,5 +84,22 @@
     "hours": "ЧАСЫ",
     "minutes": "МИНУТЫ",
     "seconds": "СЕКУНДЫ"
+  },
+  "inscriere": {
+    "title": "Подай заявку на конкурс",
+    "nickname": "Имя художника / никнейм",
+    "email": "Email",
+    "selectCategory": "Выбери категорию",
+    "categoryLogo": "Логотип",
+    "categoryPoster": "Постер",
+    "categoryCard": "Дизайн карты",
+    "descriptionPlaceholder": "Краткое описание (макс. 150 символов)",
+    "dropzoneDefault": "Перетащи PNG сюда или кликни для выбора",
+    "dropzoneSelected": "Выбрано: {{fileName}}",
+    "previewDark": "Темный предпросмотр",
+    "previewLight": "Светлый предпросмотр",
+    "agree": "Подтверждаю согласие с",
+    "conditions": "условиями участия",
+    "submit": "Отправить"
   }
 }
