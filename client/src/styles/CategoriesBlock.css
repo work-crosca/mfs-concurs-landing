@@ -47,11 +47,15 @@
 /* === TABLET === */
 @media (min-width: 768px) and (max-width: 1023px) {
   .category-item {
-    flex: 0 1 calc(33.333% - 16px);
+    flex: 0 1 calc(33.333% - 24px);
   }
   .categories-grid > :nth-child(5) {
-    flex-basis: calc(33.333% - 16px);
+    flex-basis: calc(33.333% - 24px);
     justify-content: center;
+  }
+
+  .categories-grid{
+    gap: 24px;
   }
 
   .category-icon{
@@ -65,12 +69,17 @@
 */
 @media (min-width: 1024px) {
   .category-item {
-    flex: 0 1 calc(33.333% - 16px);
+    flex: 0 1 calc(33.333% - 36px);
      --font-item-size: 36px;
   }
+
+  .categories-grid {
+    gap: 36px;
+  }
+
   .categories-grid > :nth-child(4),
   .categories-grid > :nth-child(5) {
-    flex: 0 1 calc(50% - 16px);
+    flex: 0 1 calc(50% - 36px);
     justify-content: center;
   }
 }
