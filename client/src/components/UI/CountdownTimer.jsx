@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import "../../styles/CountdownTimer.css";
 
 export default function CountdownTimer({ targetDate }) {
+  const { t } = useTranslation();
+
   const [timeLeft, setTimeLeft] = useState({
-    days: "00", hours: "00", minutes: "00", seconds: "00"
+    days: "00",
+    hours: "00",
+    minutes: "00",
+    seconds: "00",
   });
 
   useEffect(() => {
@@ -24,10 +30,10 @@ export default function CountdownTimer({ targetDate }) {
         setTimeLeft({ days: "00", hours: "00", minutes: "00", seconds: "00" });
       } else {
         setTimeLeft({
-          days: String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0'),
-          hours: String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, '0'),
-          minutes: String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, '0'),
-          seconds: String(Math.floor((diff / 1000) % 60)).padStart(2, '0'),
+          days: String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, "0"),
+          hours: String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, "0"),
+          minutes: String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, "0"),
+          seconds: String(Math.floor((diff / 1000) % 60)).padStart(2, "0"),
         });
       }
     }, 1000);
@@ -43,22 +49,22 @@ export default function CountdownTimer({ targetDate }) {
     >
       <div className="timer-item">
         <div className="timer-value">{timeLeft.days}</div>
-        <div className="timer-label">Days</div>
+        <div className="timer-label">{t("countdown.days")}</div>
       </div>
       <span className="timer-separator">:</span>
       <div className="timer-item">
         <div className="timer-value">{timeLeft.hours}</div>
-        <div className="timer-label">Hours</div>
+        <div className="timer-label">{t("countdown.hours")}</div>
       </div>
       <span className="timer-separator">:</span>
       <div className="timer-item">
         <div className="timer-value">{timeLeft.minutes}</div>
-        <div className="timer-label">Minutes</div>
+        <div className="timer-label">{t("countdown.minutes")}</div>
       </div>
       <span className="timer-separator">:</span>
       <div className="timer-item">
         <div className="timer-value">{timeLeft.seconds}</div>
-        <div className="timer-label">Seconds</div>
+        <div className="timer-label">{t("countdown.seconds")}</div>
       </div>
     </motion.div>
   );

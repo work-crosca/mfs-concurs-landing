@@ -85,5 +85,10 @@ img.large {
 }
 
 
-
-
+h2.light{
+  width: 100%;
+  color: #e5e5e5!important;
+  background: none;
+  background-clip: none;
+  -webkit-text-fill-color: #e5e5e5;
+}

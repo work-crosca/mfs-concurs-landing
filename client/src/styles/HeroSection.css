@@ -58,7 +58,6 @@
   background-clip: text;
   -webkit-background-clip: text;
   font-style: normal;
-  font-weight: 700;
   line-height: 100%;
   letter-spacing: calc((var(--font-sizhe-h1) / 100) * -1.5px );
   -webkit-text-fill-color: transparent;
@@ -108,4 +107,5 @@
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  line-height: 100%;
 }

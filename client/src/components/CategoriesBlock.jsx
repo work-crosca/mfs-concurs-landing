@@ -17,7 +17,7 @@ export default function CategoriesBlock() {
   return (
     <section className="categories-block">
       <div className="categories-header">
-        <h2>{t("categories.title")}</h2>
+        <h2 className="light">{t("categories.title")}</h2>
         <p>{t("categories.subtitle")}</p>
       </div>
 

@@ -15,7 +15,6 @@ export default function VotingBlock() {
 
   return (
     <>
-      <CountdownTimer targetDate="2025-08-09T23:59:59Z" />
       <section className="block-01 reverse">
         <motion.div
           className="col"

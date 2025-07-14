@@ -1,0 +1,32 @@
+.timer-section {
+   display: flex;
+   justify-content: center;
+   padding: 4rem 1rem;
+   align-items: center;
+
+   background: #111111;
+}
+
+.timer-section-content{
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   gap: 1rem;
+   max-width: 100%;
+   width: 1200px;
+   text-align: center;
+}
+
+
+ h2.light{
+   width: 100%;
+   color: #e5e5e5!important;
+   background: none;
+   background-clip: none;
+   -webkit-text-fill-color: #e5e5e5;
+}
+
+
+.timer-section-content p{
+   width: 100%;
+}

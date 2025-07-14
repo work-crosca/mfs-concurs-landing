@@ -7,11 +7,13 @@ import VotingBlock from "../components/VotingBlock";
 import CategoriesBlock from "../components/CategoriesBlock";
 import AwardBlock from "../components/AwardsBlock";
 import Apply from "../components/Apply";
+import EndDate from "../components/EndDate";
 
 const HomePage = () => {
   return (
     <div className="home-page">
       <HeroSection />
+      <EndDate />
       <CategoriesBlock />
       <AwardBlock />
       <VotingBlock />
