@@ -27,7 +27,7 @@ export default function FAQ() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       viewport={{ once: true }}
     >
-      <h2 className="faq-title">{t("faq.title")}</h2>
+      <h2 className="faq-title light">{t("faq.title")}</h2>
       <div className="faq-list">
         {faqItems.map((item, index) => (
           <div key={index} className={`faq-item ${activeIndex === index ? "open" : ""}`}>
