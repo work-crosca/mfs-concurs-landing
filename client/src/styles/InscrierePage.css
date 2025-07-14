@@ -2,18 +2,17 @@
   margin: 0;
   width: 100%;
   height: 100%;
-  min-height: 100vh;
   background-color: #000;
   box-sizing: border-box;
   max-width: 100vw;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
 }
 
 .inscriere-container {
   width: 100%;
-  max-width: 500px;
+  max-width: 1200px;
   margin: 4rem;
   color: #e5e5e5;
   padding: 1rem;
@@ -300,4 +299,56 @@
 
 .checkbox-agreement a{
   color: var(--light-purple);
+}
+
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form-left,
+.form-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  height: auto;
+}
+
+/* desktop ≥992px: două coloane */
+@media (min-width: 992px) {
+  .form-content {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .form-left,
+  .form-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    height: auto;
+  }
+
+  .form-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 400px;
+  }
+
+  .form-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+}
+
+.form-right input,
+.form-right select,
+.form-right textarea,
+.form-right button {
+  width: 100%;
+  box-sizing: border-box;
 }

@@ -110,121 +110,130 @@ export default function InscrierePage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h1>{t("inscriere.title")}</h1>
         <form onSubmit={handleSubmit} className="inscriere-form">
-          <input
-            type="text"
-            name="nickname"
-            placeholder={t("inscriere.nickname")}
-            value={formData.nickname}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder={t("inscriere.email")}
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-          <select
-            name="category"
-            value={formData.category}
-            onChange={handleChange}
-            required
-          >
-            <option value="">{t("inscriere.selectCategory")}</option>
-            <option value="logo">{t("inscriere.categoryLogo")}</option>
-            <option value="poster">{t("inscriere.categoryPoster")}</option>
-            <option value="card">{t("inscriere.categoryCard")}</option>
-          </select>
-          <textarea
-            name="description"
-            placeholder={t("inscriere.descriptionPlaceholder")}
-            value={formData.description}
-            onChange={handleChange}
-            maxLength={150}
-            rows="3"
-          />
-          <div className="description-counter">
-            {formData.description.length}/150
-          </div>
+          <h1>{t("inscriere.title")}</h1>
+          <div className="form-content">
+            <div className="form-left">
+              <div
+                className="image-preview-wrapper"
+                style={{ backgroundColor: previewUrl ? "transparent" : "#111" }}
+              >
+                {previewUrl && (
+                  <img
+                    src={previewUrl}
+                    alt="Preview user upload"
+                    className="user-preview"
+                  />
+                )}
+                <img
+                  src={darkMode ? overlayDark : overlayLight}
+                  alt="Overlay"
+                  className="overlay-preview"
+                />
+              </div>
 
-          <div
-            className="file-dropzone"
-            onDragOver={(e) => e.preventDefault()}
-            onDrop={handleFileDrop}
-            onClick={() => fileInputRef.current.click()}
-          >
-            <FaUpload size={30} />
-            <p>
-              {formData.file
-                ? t("inscriere.dropzoneSelected", {
-                    fileName: formData.file.name,
-                  })
-                : t("inscriere.dropzoneDefault")}
-            </p>
-          </div>
-          <input
-            type="file"
-            accept=".png"
-            ref={fileInputRef}
-            style={{ display: "none" }}
-            onChange={(e) => handleFileChange(e.target.files[0])}
-            required
-          />
-
-          {previewUrl && (
-            <div className="image-preview-wrapper">
-              <img
-                src={previewUrl}
-                alt="Preview user upload"
-                className="user-preview"
-              />
-              <img
-                src={darkMode ? overlayDark : overlayLight}
-                alt="Overlay"
-                className="overlay-preview"
-              />
-            </div>
-          )}
-
-          <div className="toggle-mode">
-            <label className="switch">
+              <div className="toggle-mode">
+                <label className="switch">
+                  <input
+                    type="checkbox"
+                    checked={!darkMode}
+                    onChange={() => setDarkMode(!darkMode)}
+                  />
+                  <span className="slider"></span>
+                </label>
+                <span>
+                  {darkMode
+                    ? t("inscriere.previewDark")
+                    : t("inscriere.previewLight")}
+                </span>
+              </div>
+              <div
+                className="file-dropzone"
+                onDragOver={(e) => e.preventDefault()}
+                onDrop={handleFileDrop}
+                onClick={() => fileInputRef.current.click()}
+              >
+                <FaUpload size={30} />
+                <p>
+                  {formData.file
+                    ? t("inscriere.dropzoneSelected", {
+                        fileName: formData.file.name,
+                      })
+                    : t("inscriere.dropzoneDefault")}
+                </p>
+              </div>
               <input
-                type="checkbox"
-                checked={!darkMode}
-                onChange={() => setDarkMode(!darkMode)}
+                type="file"
+                accept=".png"
+                ref={fileInputRef}
+                style={{ display: "none" }}
+                onChange={(e) => handleFileChange(e.target.files[0])}
+                required
               />
-              <span className="slider"></span>
-            </label>
-            <span>
-              {darkMode
-                ? t("inscriere.previewDark")
-                : t("inscriere.previewLight")}
-            </span>
-          </div>
-
-          <label className="checkbox-agreement">
-            <input
-              type="checkbox"
-              checked={agree}
-              onChange={(e) => setAgree(e.target.checked)}
-              required
-            />
-            <div style={{ display: "inline-block" }}>
-              {t("inscriere.agree")} <a href="">{t("inscriere.conditions")}</a>
             </div>
-          </label>
 
-          <button type="submit" disabled={loading}>
-            {loading ? (
-              <FaSpinner className="spinner" />
-            ) : (
-              t("inscriere.submit")
-            )}
-          </button>
+            <div className="form-right">
+              <input
+                type="text"
+                name="nickname"
+                placeholder={t("inscriere.nickname")}
+                value={formData.nickname}
+                onChange={handleChange}
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder={t("inscriere.email")}
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+              <select
+                name="category"
+                value={formData.category}
+                onChange={handleChange}
+                required
+              >
+                <option value="">{t("inscriere.selectCategory")}</option>
+                <option value="logo">{t("inscriere.categoryLogo")}</option>
+                <option value="poster">{t("inscriere.categoryPoster")}</option>
+                <option value="card">{t("inscriere.categoryCard")}</option>
+              </select>
+              <textarea
+                name="description"
+                placeholder={t("inscriere.descriptionPlaceholder")}
+                value={formData.description}
+                onChange={handleChange}
+                maxLength={150}
+                rows="3"
+              />
+              <div className="description-counter">
+                {formData.description.length}/150
+              </div>
+
+              <label className="checkbox-agreement">
+                <input
+                  type="checkbox"
+                  checked={agree}
+                  onChange={(e) => setAgree(e.target.checked)}
+                  required
+                />
+                <div style={{ display: "inline-block" }}>
+                  {t("inscriere.agree")}{" "}
+                  <a href="">{t("inscriere.conditions")}</a>
+                </div>
+              </label>
+
+              <button type="submit" disabled={loading}>
+                {loading ? (
+                  <FaSpinner className="spinner" />
+                ) : (
+                  t("inscriere.submit")
+                )}
+              </button>
+            </div>
+          </div>
         </form>
       </motion.section>
 
