@@ -325,10 +325,7 @@
 
   .form-left,
   .form-right {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-    height: auto;
+    flex: 1;
   }
 
   .form-left {
