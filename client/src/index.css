@@ -34,17 +34,17 @@ body {
 }
 
 h2 {
-  font-size: 4rem;
+  font-size: 2rem;
   background: var(--gradiennt-01);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  line-height: 4rem;
+  line-height: 100%;
 }
 
 h3{
-  font-size: 3rem;
-  line-height: 3rem;
+  font-size: 2rem;
+  line-height: 2rem;
   background: var(--gradiennt-01);
   -webkit-background-clip: text;
   background-clip: text;
