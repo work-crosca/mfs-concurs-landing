@@ -1,6 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 import "../../styles/ImageCard.css";
+import { FaUser } from "react-icons/fa";
 
 export default function ImageCard({ img, API_URL }) {
   return (
@@ -14,6 +15,10 @@ export default function ImageCard({ img, API_URL }) {
           }
           alt={img.description}
         />
+        <div className="author-overlay">
+          <FaUser />
+          {img.nickname || "Anonim"}
+        </div>
       </div>
     </Link>
   );

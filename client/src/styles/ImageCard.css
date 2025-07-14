@@ -9,6 +9,7 @@
   cursor: pointer;
   border: 2px solid transparent;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 .image-card img {
@@ -25,3 +26,25 @@
 .image-card:hover img{
    scale: 1.1;
 }
+
+.author-overlay {
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+   color: #fff;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 0.4rem;
+   padding: 1rem 0 0.6rem 0;
+   font-size: 0.9rem;
+   backdrop-filter: blur(1px);
+   opacity: 0;
+   transition: opacity 0.3s ease;
+ }
+ 
+ .image-card:hover .author-overlay {
+   opacity: 1;
+ }
