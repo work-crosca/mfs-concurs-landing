@@ -72,7 +72,7 @@ export default function InscrierePage() {
       data.append("description", formData.description);
       data.append("file", renamedFile);
 
-      await fetch(`${import.meta.env.VITE_API_URL}/api/upload`, {
+      await fetch(`${import.meta.env.VITE_APP_API_URL}/api/upload`, {
         method: "POST",
         body: data,
       });
