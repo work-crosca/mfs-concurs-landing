@@ -1,6 +1,6 @@
 .apply-btn{
    border-radius: 2rem;
-   background: #cc3cff;
+   background: var(--light-purple);
    text-transform: uppercase;
    text-decoration: none;
    color: #fff;

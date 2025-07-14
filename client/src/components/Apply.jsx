@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import "../styles/Apply.css";
 import applyImage from "../assets/promo5.png?w=800&format=webp&as=src";
@@ -8,7 +7,6 @@ import applyImage from "../assets/promo5.png?w=800&format=webp&as=src";
 const Apply = () => {
   const { t } = useTranslation();
 
-  const navigate = useNavigate();
   const imageRef = useRef(null);
   const textRef = useRef(null);
   const containerRef = useRef(null);
@@ -38,7 +36,8 @@ const Apply = () => {
         <p>{t("apply.line4")}</p>
 
         <div style={{ marginTop: "2rem" }}>
-          <button className="apply-btn" onClick={() => navigate("/inscrirere")}>
+          <button className="apply-btn" 
+            onClick={() => (window.location.href = "/inscriere")}>
             {t("apply.button")}
           </button>
         </div>
