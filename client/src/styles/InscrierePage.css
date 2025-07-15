@@ -109,7 +109,7 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  border-radius: 2rem;
+  border-radius: 1rem;
   background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 1));
   border: 1px solid #fff;
   backdrop-filter: blur(8px);

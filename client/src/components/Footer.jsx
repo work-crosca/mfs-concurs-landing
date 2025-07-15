@@ -1,51 +1,86 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
 import "../styles/Footer.css";
+import { useTranslation } from "react-i18next";
+import { FaInstagram, FaFacebookF, FaTiktok, FaYoutube } from "react-icons/fa";
+import logo from "../assets/logo.svg";
+import {
+  IoLogoApple,
+  IoLogoGooglePlaystore,
+  IoCallOutline,
+} from "react-icons/io5";
+import qrCode from "../assets/mmoney.svg";
 
-const Footer = () => {
-  const { t } = useTranslation();
+export default function Footer() {
+  const { t, i18n } = useTranslation();
+
+  // detectăm platforma pentru mobile
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
   return (
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-column">
-          <h4>{t("footer.companyTitle")}</h4>
-          <ul>
-            <li><a href="/about">{t("footer.about")}</a></li>
-            <li><a href="/careers">{t("footer.careers")}</a></li>
-            <li><a href="/press">{t("footer.press")}</a></li>
-          </ul>
+          <h4>{t("footer.downloadApp")}</h4>
+          <img src={logo} alt="moldcell money" className="download-badge"/>
+          {isMobile ? (
+            <a
+              style={{textDecoration: "none"}}
+              href={
+                isIOS
+                  ? "https://apps.apple.com/us/app/moldcell-money/id6443490483"
+                  : "https://play.google.com/store/apps/details?id=app.moldcell.mmoney"
+              }
+            >
+              <div className="store-icon">
+                {isIOS ? (
+                  <div
+                  className="download-app-btn">
+                    <IoLogoApple style={{fontSize: "1.2rem"}}/> AppStore
+                  </div>
+                ) : (
+                  <div
+                  className="download-app-btn">
+                    <IoLogoGooglePlaystore  style={{fontSize: "1.2rem"}}/> GooglePlay
+                  </div>
+                )}
+              </div>
+            </a>
+          ) : (
+            <img src={qrCode} alt="Scan QR to download" className="qr-code" />
+          )}
         </div>
 
         <div className="footer-column">
-          <h4>{t("footer.supportTitle")}</h4>
-          <ul>
-            <li><a href="/faq">{t("footer.faq")}</a></li>
-            <li><a href="/contact">{t("footer.contact")}</a></li>
-            <li><a href="/help">{t("footer.help")}</a></li>
-          </ul>
+          <h4>{t("footer.contact")}</h4>
+          <p className="tel">
+            <IoCallOutline style={{ fontSize: "1.5rem" }} />
+            <a href="tel:+37322444444">+373 22 444 444</a>
+          </p>
         </div>
 
         <div className="footer-column">
-          <h4>{t("footer.legalTitle")}</h4>
-          <ul>
-            <li><a href="/terms">{t("footer.terms")}</a></li>
-            <li><a href="/privacy">{t("footer.privacy")}</a></li>
-            <li><a href="/cookies">{t("footer.cookies")}</a></li>
-          </ul>
+          <h4>{t("footer.followUs")}</h4>
+          <div className="social-icons">
+            <a href="https://www.instagram.com/moldcellmoney/">
+              <FaInstagram />
+            </a>
+            <a href="https://www.facebook.com/moldcellmoney/">
+              <FaFacebookF />
+            </a>
+            <a href="https://www.tiktok.com/@moldcellmoney">
+              <FaTiktok />
+            </a>
+            <a href="https://www.youtube.com/@moldcellmoney">
+              <FaYoutube />
+            </a>
+          </div>
         </div>
+      </div>
 
-        <div className="footer-column">
-          <h4>{t("footer.followTitle")}</h4>
-          <ul>
-            <li><a href="https://facebook.com">{t("footer.facebook")}</a></li>
-            <li><a href="https://instagram.com">{t("footer.instagram")}</a></li>
-            <li><a href="https://tiktok.com">{t("footer.tiktok")}</a></li>
-          </ul>
-        </div>
+      <div className="footer-bottom">
+        © 2025 Moldcell CG. {t("footer.allRights")}
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

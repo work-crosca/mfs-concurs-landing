@@ -6,7 +6,6 @@ import "../styles/InscrierePage.css";
 import overlayDark from "../assets/shablon/VISA-shablon-dark.png?w=800&format=webp&as=src";
 import overlayLight from "../assets/shablon/VISA-shablon-light.png?w=800&format=webp&as=src";
 
-
 export default function InscrierePage() {
   const { t } = useTranslation();
   const [formData, setFormData] = useState({
@@ -31,7 +30,8 @@ export default function InscrierePage() {
   };
 
   const handleFileChange = (file) => {
-    if (file && file.type !== "image/png") {
+    if (!file) return;
+    if (file.type !== "image/png") {
       setToast({ type: "error", message: "Fișierul trebuie să fie PNG!" });
       return;
     }
@@ -48,23 +48,24 @@ export default function InscrierePage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (!agree) {
-      setToast({
-        type: "error",
-        message: "Trebuie să fii de acord cu condițiile!",
-      });
+      setToast({ type: "error", message: "Trebuie să fii de acord cu condițiile!" });
       return;
     }
+
     if (!formData.file) {
       setToast({ type: "error", message: "Trebuie să încarci un fișier PNG!" });
       return;
     }
+
     try {
       setLoading(true);
       const newFileName = slugify(formData.nickname) + ".png";
       const renamedFile = new File([formData.file], newFileName, {
         type: formData.file.type,
       });
+
       const data = new FormData();
       data.append("nickname", formData.nickname);
       data.append("email", formData.email);
@@ -72,10 +73,17 @@ export default function InscrierePage() {
       data.append("description", formData.description);
       data.append("file", renamedFile);
 
-      await fetch(`${import.meta.env.VITE_APP_API_URL}/api/upload`, {
+      const response = await fetch(`${import.meta.env.VITE_APP_API_URL}/api/upload`, {
         method: "POST",
         body: data,
       });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        setToast({ type: "error", message: result.message || "Eroare la upload." });
+        return;
+      }
 
       setToast({ type: "success", message: "Trimis cu succes!" });
       setFormData({
@@ -87,6 +95,7 @@ export default function InscrierePage() {
       });
       setPreviewUrl(null);
       setAgree(false);
+
     } catch (err) {
       console.error(err);
       setToast({ type: "error", message: "Eroare la trimitere." });
@@ -148,6 +157,7 @@ export default function InscrierePage() {
                     : t("inscriere.previewLight")}
                 </span>
               </div>
+
               <div
                 className="file-dropzone"
                 onDragOver={(e) => e.preventDefault()}
@@ -163,6 +173,7 @@ export default function InscrierePage() {
                     : t("inscriere.dropzoneDefault")}
                 </p>
               </div>
+
               <input
                 type="file"
                 accept=".png"
@@ -198,16 +209,10 @@ export default function InscrierePage() {
               >
                 <option value="">{t("inscriere.selectCategory")}</option>
                 <option value="sport">{t("inscriere.categorySport")}</option>
-                <option value="digital">
-                  {t("inscriere.categoryDigital")}
-                </option>
-                <option value="traditions">
-                  {t("inscriere.categoryTraditions")}
-                </option>
+                <option value="digital">{t("inscriere.categoryDigital")}</option>
+                <option value="traditions">{t("inscriere.categoryTraditions")}</option>
                 <option value="nature">{t("inscriere.categoryNature")}</option>
-                <option value="freestyle">
-                  {t("inscriere.categoryFreestyle")}
-                </option>
+                <option value="freestyle">{t("inscriere.categoryFreestyle")}</option>
               </select>
               <textarea
                 name="description"

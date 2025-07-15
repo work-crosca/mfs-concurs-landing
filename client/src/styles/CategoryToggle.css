@@ -1,13 +1,11 @@
 .tabs-wrapper {
   display: flex;
   height: auto;
-  padding: 0rem 0rem 2rem 0rem;
   justify-content: center;
   margin: 2rem auto 0rem auto;
   max-width: 98vw;
   overflow: hidden;
  }
- 
  .tabs {
    display: flex;
    overflow-x: auto;

@@ -94,5 +94,11 @@
     "agree": "Confirm că sunt de acord cu",
     "conditions": "condițiile de participare",
     "submit": "Trimite"
+  },
+  "footer": {
+    "downloadApp": "Descarcă aplicația",
+    "contact": "Contacte",
+    "followUs": "Urmărește-ne pe",
+    "allRights": "Toate drepturile rezervate."
   }
 }

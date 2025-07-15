@@ -44,7 +44,7 @@ export default function ImageCard({ img, API_URL }) {
         </div>
         <div className="like-count">
           <BsFillHeartFill
-            style={{ fontSize: "1.5rem", color: "var(--light-purple)" }}
+            style={{ color: "var(--light-purple)" }}
           />
           {img.likesCount || 0}
         </div>
