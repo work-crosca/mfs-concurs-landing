@@ -43,7 +43,6 @@ export default function HeroSection() {
         </div>
         <div className="hero-content-right">
           <div className="hero-text">
-            <p>{t("hero.text")}</p>
             <h1>
               {" "}
               <Trans
@@ -62,6 +61,7 @@ export default function HeroSection() {
                   </React.Fragment>
                 ))}
             </p>
+            <p>{t("hero.text")}</p>
           </div>
 
           <button
