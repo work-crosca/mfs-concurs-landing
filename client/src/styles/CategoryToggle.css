@@ -1,37 +1,57 @@
-.toggle-container {
-   display: inline-flex;
-   background: #111;
-   gap: 0.5rem;
-   border-radius: 9999px;
-   padding: 0.5rem;
+.tabs-wrapper {
+  display: flex;
+  height: auto;
+  padding: 0rem 0rem 2rem orem;
+  justify-content: center;
+  margin: 2rem auto 1rem auto;
+  max-width: 98vw;
+  overflow: hidden;
+ }
  
-   /* pentru mobile scroll */
+ /* scroll pe x + padding lateral */
+ .tabs {
+   display: flex;
    overflow-x: auto;
    -webkit-overflow-scrolling: touch;
+   gap: 1.5rem;
+   justify-content: flex-start;
+   padding: 0 1rem;
  }
  
- .toggle-container::-webkit-scrollbar {
-   display: none; 
+ .tabs::-webkit-scrollbar {
+   display: none;
  }
  
- .toggle-button {
-   flex: 0 0 auto;
-   border: none;
+ .tab-button {
+   position: relative;
+   white-space: nowrap; /* text mereu intr-un rand */
    background: transparent;
+   border: none;
    color: #e5e5e5;
+   font-size: 1rem;
    font-weight: 600;
-   padding: 1rem 2rem;
-   border-radius: 9999px;
+   padding: 0.5rem;
    cursor: pointer;
-   transition: all 0.3s ease;
+   transition: color 0.3s ease;
  }
- 
- .toggle-button.active {
+ *
+ .tab-button::after {
+   content: "";
+   position: absolute;
+   left: 50%;
+   bottom: -4px;
+   width: 0;
+   height: 2px;
    background: var(--light-purple);
-   color: #fff;
-   font-weight: 600;
+   border-radius: 2px;
+   transition: all 0.3s ease;
+   transform: translateX(-50%);
  }
  
- .toggle-button:hover:not(.active) {
-   background: rgba(0, 0, 0, 0.2);
+ .tab-button.active {
+   color: var(--light-purple);
+ }
+ 
+ .tab-button.active::after {
+   width: 100%;
  }

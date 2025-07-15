@@ -1,3 +1,8 @@
+.gallery-page {
+  width: 100vw;
+  box-sizing: border-box;
+}
+
 .gallery {
   display: grid;
   width: 1200px;
@@ -47,10 +52,3 @@
     opacity: 0.7;
   }
 }
-.gallery-filters {
-  text-align: center;
-  margin: 2rem auto 1rem auto;
-  max-width: 90%;
-  overflow-x: auto;
-}
-

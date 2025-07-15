@@ -76,7 +76,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: #545556;
   border-radius: 22px;
   transition: 0.4s;
 }
@@ -94,7 +94,7 @@
 }
 
 input:checked + .slider {
-  background-color: var(--light-purple, #990ae3);
+  background-color: var(--light-purple);
 }
 
 input:checked + .slider:before {
