@@ -74,7 +74,7 @@ export default function Gallery() {
   }, [selectedCategory]);
 
   return (
-    <>
+    <div className="gallery-page">
       <HeroSection />
       <div className="gallery-filters">
         <CategoryToggle
@@ -108,6 +108,6 @@ export default function Gallery() {
           <div className="dot"></div>
         </div>
       )}
-    </>
+    </div>
   );
 }
