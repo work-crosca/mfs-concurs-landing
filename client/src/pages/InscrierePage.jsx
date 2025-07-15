@@ -50,7 +50,10 @@ export default function InscrierePage() {
     e.preventDefault();
 
     if (!agree) {
-      setToast({ type: "error", message: "Trebuie să fii de acord cu condițiile!" });
+      setToast({
+        type: "error",
+        message: "Trebuie să fii de acord cu condițiile!",
+      });
       return;
     }
 
@@ -73,15 +76,21 @@ export default function InscrierePage() {
       data.append("description", formData.description);
       data.append("file", renamedFile);
 
-      const response = await fetch(`${import.meta.env.VITE_APP_API_URL}/api/upload`, {
-        method: "POST",
-        body: data,
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_APP_API_URL}/api/upload`,
+        {
+          method: "POST",
+          body: data,
+        }
+      );
 
       const result = await response.json();
 
       if (!result.success) {
-        setToast({ type: "error", message: result.message || "Eroare la upload." });
+        setToast({
+          type: "error",
+          message: result.message || "Eroare la upload.",
+        });
         return;
       }
 
@@ -95,7 +104,6 @@ export default function InscrierePage() {
       });
       setPreviewUrl(null);
       setAgree(false);
-
     } catch (err) {
       console.error(err);
       setToast({ type: "error", message: "Eroare la trimitere." });
@@ -209,10 +217,16 @@ export default function InscrierePage() {
               >
                 <option value="">{t("inscriere.selectCategory")}</option>
                 <option value="sport">{t("inscriere.categorySport")}</option>
-                <option value="digital">{t("inscriere.categoryDigital")}</option>
-                <option value="traditions">{t("inscriere.categoryTraditions")}</option>
+                <option value="digital">
+                  {t("inscriere.categoryDigital")}
+                </option>
+                <option value="traditions">
+                  {t("inscriere.categoryTraditions")}
+                </option>
                 <option value="nature">{t("inscriere.categoryNature")}</option>
-                <option value="freestyle">{t("inscriere.categoryFreestyle")}</option>
+                <option value="freestyle">
+                  {t("inscriere.categoryFreestyle")}
+                </option>
               </select>
               <textarea
                 name="description"
@@ -233,10 +247,16 @@ export default function InscrierePage() {
                   onChange={(e) => setAgree(e.target.checked)}
                   required
                 />
-                <div style={{ display: "inline-block" }}>
+                <span>
                   {t("inscriere.agree")}{" "}
-                  <a href="">{t("inscriere.conditions")}</a>
-                </div>
+                  <a
+                    href="/terms/Regulament_Moldcell_Visa_Card_concurs_de_design_Visa.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {t("inscriere.conditions")}
+                  </a>
+                </span>
               </label>
 
               <button type="submit" disabled={loading}>
