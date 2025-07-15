@@ -5,6 +5,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import ImageCard from "../components/UI/ImageCard";
 import CategoryToggle from "../components/UI/CategoryToggle";
+import HeroSection from "../components/HeroSection";
 
 export default function Gallery() {
   const { t } = useTranslation();
@@ -135,6 +136,7 @@ export default function Gallery() {
 
   return (
     <>
+      <HeroSection />
       <div className="gallery-filters">
         <CategoryToggle
           selected={selectedCategory}
