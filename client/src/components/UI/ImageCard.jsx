@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/ImageCard.css";
-import { FaHeart } from "react-icons/fa";
+import { BsFillHeartFill } from "react-icons/bs";
 import overlayDark from "../../assets/shablon/VISA-shablon-dark.png";
 import overlayLight from "../../assets/shablon/VISA-shablon-light.png";
 
@@ -43,8 +43,8 @@ export default function ImageCard({ img, API_URL }) {
           <span>{darkMode ? "Preview dark" : "Preview light"}</span>
         </div>
         <div className="like-count">
-          <FaHeart
-            style={{ marginRight: "0.3rem", color: "var(--light-purple)" }}
+          <BsFillHeartFill
+            style={{ fontSize: "1.5rem", color: "var(--light-purple)" }}
           />
           {img.likesCount || 0}
         </div>
