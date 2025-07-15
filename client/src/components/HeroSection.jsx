@@ -61,7 +61,7 @@ export default function HeroSection() {
                   </React.Fragment>
                 ))}
             </p>
-            <p>{t("hero.text")}</p>
+            <p style={{fontSize: "1.2rem"}}>{t("hero.text")}</p>
           </div>
 
           <button
