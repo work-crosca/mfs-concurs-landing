@@ -127,5 +127,9 @@
     "contact": "Contacte",
     "followUs": "Urmărește-ne pe",
     "allRights": "Toate drepturile rezervate."
+  },
+  "notfound": {
+    "text": "Pagina nu a fost găsită.",
+    "button": "Înapoi acasă"
   }
 }
