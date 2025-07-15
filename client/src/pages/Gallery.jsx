@@ -34,7 +34,7 @@ export default function Gallery() {
     const fetchImages = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`${API_URL}/api/images`);
+        const res = await fetch(`${API_URL}/api/images?category=${selectedCategory}&page=${page}&limit=6`);
         const data = await res.json();
         setImages(data);
       } catch (err) {
