@@ -6,7 +6,7 @@
    color: #fff;
    padding: 1rem 2rem;
    font-size: 1rem;
-   cursor: pointer;
+   cursor: pointer!important;
    transition: all 0.3s ease;
    border: none;
    margin-top: 1rem;

@@ -5,7 +5,7 @@
   margin: 3rem auto;
 }
 
-.faq-title{
+.faq-title {
   color: #e5e5e5;
   font-size: 2rem;
   font-weight: bold;
@@ -49,13 +49,31 @@
   transform: rotate(180deg);
 }
 
-.faq-answer p{
+.faq-answer p {
   font-size: 1rem;
   color: #e5e5e5;
   overflow: hidden;
+  margin-bottom: 1rem;
 }
 
+/* Stil pentru liste */
+.faq-answer ul {
+  margin: 0.5rem 0 1rem;
+  padding-left: 1.2rem;
+  list-style: disc;
+}
 
+.faq-answer a{
+  color: #e5e5e5;
+}
+
+.faq-answer li {
+  color: #e5e5e5;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .faq-section {
     padding: 2rem 1rem;
@@ -75,7 +93,8 @@
     font-size: 1rem;
   }
 
-  .faq-answer {
+  .faq-answer p,
+  .faq-answer li {
     font-size: 0.95rem;
   }
 }

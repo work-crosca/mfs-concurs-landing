@@ -52,7 +52,16 @@ export default function HeroSection() {
               />
             </h1>
             <h1>{t("hero.title2")}</h1>
-            <p>{t("hero.subtitle")}</p>
+            <p>
+              {t("hero.subtitle")
+                .split("\n")
+                .map((line, idx) => (
+                  <React.Fragment key={idx}>
+                    {line}
+                    <br />
+                  </React.Fragment>
+                ))}
+            </p>
           </div>
 
           <button

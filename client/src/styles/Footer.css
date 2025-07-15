@@ -79,7 +79,7 @@
 .download-app-btn {
   cursor: pointer;
   max-width: 96px;
-  border-radius: 8px;
+  border-radius: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;

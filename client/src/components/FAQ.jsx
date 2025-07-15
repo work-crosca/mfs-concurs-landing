@@ -7,8 +7,11 @@ import "../styles/FAQ.css";
 const faqItems = [
   { questionKey: "faq.q1", answerKey: "faq.a1" },
   { questionKey: "faq.q2", answerKey: "faq.a2" },
-  { questionKey: "faq.q3", answerKey: "faq.a3" },
-  { questionKey: "faq.q4", answerKey: "faq.a4" },
+  { questionKey: "faq.q3", answerKey: "faq.a3_list", isList: true },
+  { questionKey: "faq.q4", answerKey: "faq.a4_list", isList: true, html: true },
+  { questionKey: "faq.q5", answerKey: "faq.a5" },
+  { questionKey: "faq.q6", answerKey: "faq.a6", html: true },
+  { questionKey: "faq.q7", isResponsibility: true }
 ];
 
 export default function FAQ() {
@@ -37,6 +40,7 @@ export default function FAQ() {
                 className={`faq-icon ${activeIndex === index ? "rotated" : ""}`}
               />
             </button>
+
             <AnimatePresence initial={false}>
               {activeIndex === index && (
                 <motion.div
@@ -44,10 +48,49 @@ export default function FAQ() {
                   className="faq-answer"
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: "auto", opacity: 1, marginTop: 12 }}
-                  exit={{ height: 0, opacity: 0}}
+                  exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                 >
-                  <p>{t(item.answerKey)}</p>
+                  {/* Dacă e secțiunea specială cu responsabilitatea */}
+                  {item.isResponsibility && (
+                    <>
+                      <p>{t("faq.a7_intro")}</p>
+                      <ul>
+                        {t("faq.a7_list", { returnObjects: true }).map((li, i) => (
+                          <li key={i}>{li}</li>
+                        ))}
+                      </ul>
+                      <p>{t("faq.a7_footer")}</p>
+                    </>
+                  )}
+
+                  {/* Dacă e listă simplă */}
+                  {!item.isResponsibility && item.isList && !item.html && (
+                    <ul>
+                      {t(item.answerKey, { returnObjects: true }).map((li, i) => (
+                        <li key={i}>{li}</li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {/* Dacă e listă cu HTML (ex: ArtCor link) */}
+                  {!item.isResponsibility && item.isList && item.html && (
+                    <ul>
+                      {t(item.answerKey, { returnObjects: true }).map((li, i) => (
+                        <li key={i} dangerouslySetInnerHTML={{ __html: li }}></li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {/* Dacă e HTML direct (ex: regulament) */}
+                  {!item.isResponsibility && !item.isList && item.html && (
+                    <p dangerouslySetInnerHTML={{ __html: t(item.answerKey) }}></p>
+                  )}
+
+                  {/* Dacă e simplu paragraf */}
+                  {!item.isResponsibility && !item.isList && !item.html && (
+                    <p>{t(item.answerKey)}</p>
+                  )}
                 </motion.div>
               )}
             </AnimatePresence>

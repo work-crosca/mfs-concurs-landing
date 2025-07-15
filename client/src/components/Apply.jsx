@@ -31,9 +31,7 @@ const Apply = () => {
       >
         <h2>{t("apply.title")}</h2>
         <p>{t("apply.line1")}</p>
-        <p>{t("apply.line2")}</p>
-        <p style={{marginTop: "1rem"}}>{t("apply.line3")}</p>
-        <p>{t("apply.line4")}</p>
+        <p style={{marginTop: "1rem"}}>{t("apply.line2")}</p>
 
         <div style={{ marginTop: "2rem" }}>
           <button className="apply-btn" 

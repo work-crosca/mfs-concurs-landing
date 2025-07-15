@@ -36,12 +36,12 @@ export default function Footer() {
                 {isIOS ? (
                   <div
                   className="download-app-btn">
-                    <IoLogoApple style={{fontSize: "1.2rem"}}/> AppStore
+                    <IoLogoApple style={{fontSize: "2rem"}}/> AppStore
                   </div>
                 ) : (
                   <div
                   className="download-app-btn">
-                    <IoLogoGooglePlaystore  style={{fontSize: "1.2rem"}}/> GooglePlay
+                    <IoLogoGooglePlaystore  style={{fontSize: "2rem"}}/> GooglePlay
                   </div>
                 )}
               </div>

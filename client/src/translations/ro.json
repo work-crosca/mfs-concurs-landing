@@ -5,39 +5,68 @@
   },
 
   "hero": {
-    "title1": "Noi <span>FACEM!</span>",
-    "title2": "cardul tău realitate!",
-    "subtitle": "Fond de premii 100 000 lei",
-    "cta": "Vreau",
-    "text": "Tu creezi."
+    "title1": "Tu creezi.",
+    "title2": "",
+    "subtitle": "Noi FACEM\ncardul tău realitate!",
+    "cta": "Aplică la concurs",
+    "text": ""
   },
   "about": {
     "title": "Cum participi?",
-    "step1": "Descarcă template-ul de design (ai grijă la cerințele tehnice);",
-    "step2": "Creează designul tău în stilul care te definește;",
-    "step3": "Încarcă propunerea până pe 10 august;",
+    "step1": "Descarcă template-ul de design (ai grijă la cerințele tehnice)",
+    "step2": "Creează designul tău în stilul care te definește",
+    "step3": "Încarcă propunerea până pe 10 august",
     "step4": "Spune-ți povestea prin design. Noi o facem realitate.",
-    "criteria": "(!) Criterii de jurizare: Creativitate & originalitate; Claritatea mesajului vizual; Relevanță pentru brandul Moldcell și Moldcell Visa Card; Ușurința de aplicare în format digital. Poți trimite maximum 3 propuneri. Creațiile trebuie să fie originale. Formatele acceptate: PNG, JPG, PDF sau Figma link.",
+    "criteria": "(!) Criterii de jurizare: Creativitate & originalitate; Claritatea mesajului vizual; Relevanța pentru brandul Moldcell și Moldcell Visa Card; Ușurința de aplicare în format digital. Alte detalii: Poți aplica în toate 5 categorii, cu maximum 5 propuneri per categorie. Creațiile trebuie să fie originale (nu se vor accepta lucrări generate AI sau copiate). Format acceptat: PNG, 1536 x 969 pixeli",
     "rulesLink": "Cerințele tehnice & Regulamentul oficial"
   },
   "faq": {
-    "title": "Întrebări frecvente",
-    "q1": "Ce este aplicația my moldcell?",
-    "a1": "Este aplicația oficială pentru gestionarea contului tău Moldcell.",
-    "q2": "Cum pot descărca aplicația?",
-    "a2": "Accesează App Store sau Google Play și caută „my moldcell”.",
-    "q3": "Cum pot colecta GiftBox-ul săptămânal?",
-    "a3": "Trebuie să te autentifici zilnic în aplicația My Moldcell și să colectezi câte o steluță zilnic, timp de 7 zile consecutive. La finalul seriei, primești GiftBox-ul cu premiul garantat!",
-    "q4": "Cum activez/dezactivez autoprelungirea unei opțiuni?",
-    "a4": "Activarea sau dezactivarea autoprelungirii se face simplu, folosind toggle (butonul de activare/dezactivare) din aplicație, direct din secțiunea opțiunii respective."
+    "title": "FAQ",
+
+    "q1": "Până când pot trimite designul meu?",
+    "a1": "Poți aplica cu designul tău până pe 10 august 2025, inclusiv.",
+
+    "q2": "Pot participa cu mai multe designuri?",
+    "a2": "Da, poți aplica în toate 5 categorii, cu maximum 5 propuneri per categorie.",
+
+    "q3": "Cum se face votarea?",
+    "a3_list": [
+      "Publicul va vota online, în perioada 11–20 august:",
+      "1 vot per design.",
+      "Publicul poate vota în toate cele 5 categorii.",
+      "Platforma de voting va fi anunțată din timp pe canalele oficiale de comunicare Moldcell."
+    ],
+
+    "q4": "Ce premii se oferă?",
+    "a4_list": [
+      "Cei 5 câștigători (câte unul per categorie) vor primi:",
+      "20 000 lei fiecare.",
+      "Cardul lor va fi inclus în aplicația Moldcell Money.",
+      "Invitație la evenimentul de premiere pe 22 august, la <a href='https://artcor.md' target='_blank'>ArtCor</a>."
+    ],
+
+    "q5": "Trebuie să fiu designer profesionist?",
+    "a5": "Nu! Poate participa oricine are o idee creativă. Ai doar grijă să respecți formatul și cerințele tehnice din regulament.",
+
+    "q6": "Unde găsesc regulamentul?",
+    "a6": "Tot ce ai nevoie e <a href='/terms/Regulament_Moldcell_Visa_Card_concurs_de_design_Visa.pdf' target='_blank'>aici</a>.",
+
+    "q7": "Responsabilitatea asupra conținutului proiectelor:",
+    "a7_intro": "Organizatorul concursului nu își asumă nicio responsabilitate pentru conținutul proiectelor de design depuse de participanți. Fiecare participant este exclusiv responsabil pentru originalitatea, legalitatea și conformitatea proiectului transmis, precum și pentru respectarea tuturor drepturilor de proprietate intelectuală aferente.",
+    "a7_list": [
+      "Proiectul de design este o creație originală și nu încalcă drepturile de autor sau alte drepturi ale unor terți.",
+      "Nu conține elemente cu caracter ofensator, discriminatoriu, ilegal sau contrar bunelor moravuri.",
+      "În cazul constatării unei încălcări a drepturilor de autor sau a altor reglementări legale aplicabile, răspunderea aparține în întregime participantului."
+    ],
+    "a7_footer": "Organizatorul își rezervă dreptul de a exclude din concurs orice proiect care contravine acestor prevederi, fără a fi necesară o notificare prealabilă."
   },
   "voting": {
     "period": "10 – 19 august:",
     "title": "Votul e în mâinile publicului!",
-    "text1": "Poți vota un singur design per categorie.",
-    "text2": "Dar votul este posibil în toate categoriile.",
-    "text3": "Susține-i pe cei care inspiră — sau… pe tine!",
-    "text4": "Toată lumea va putea vota designul favorit aici:",
+    "text1": "Toată lumea va putea vota designul favorit",
+    "text2": "Pot vota un singur design per categorie",
+    "text3": "Dar votul este posibil în toate categoriile",
+    "text4": "Susține-i pe cei care inspiră — sau… pe tine!",
     "cta": "Votează acum"
   },
   "categories": {
@@ -51,8 +80,8 @@
     "note": "Fiecare categorie are un loc de onoare pentru un singur câștigător. Poate fi al tău! Vezi o scurtă explicație pentru categorii – ca să-ți fie mai ușor să alegi direcția potrivită."
   },
   "prizes": {
-    "amount": "100 000 lei",
-    "subtitle": "x5 premii",
+    "amount": "Ce câștigi?",
+    "subtitle": "Pe bune:",
     "line1": "20 000 lei – premiu per 1 câștigător din fiecare categorie",
     "line2": "Designul tău va apărea în aplicația moldcell money",
     "line3": "Prezentare oficială la un eveniment exclusiv cu influenceri & presă",
@@ -60,11 +89,9 @@
   },
   "apply": {
     "title": "Moldcell Visa Card – mai mult decât un card",
-    "line1": "Este libertatea ta de exprimare, într-un format digital.",
-    "line2": "Este vocea unei generații care creează, se implică și rămâne conectată aici, acasă.",
-    "line3": "Tu creezi. Noi FACEM.",
-    "line4": "Participă acum și pune-ți stilul în circulație.",
-    "button": "Aplică la concurs aici."
+    "line1": "Este libertatea ta de exprimare, într-un format digital. Este vocea unei generații care creează, se implică și rămâne conectată aici, acasă.",
+    "line2": "Tu creezi. Noi FACEM. Participă acum și pune-ți stilul în circulație. ",
+    "button": "Aplică la concurs"
   },
   "endDate": {
     "title": "Mai ai timp să aplici:",
