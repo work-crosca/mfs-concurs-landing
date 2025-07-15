@@ -1,27 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/ImageCard.css";
-import { FaUser } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
+import overlayDark from "../../assets/shablon/VISA-shablon-dark.png";
+import overlayLight from "../../assets/shablon/VISA-shablon-light.png";
 
 export default function ImageCard({ img, API_URL }) {
+  const [darkMode, setDarkMode] = useState(true);
+
   return (
-    <div className="image-card">
+    <div className="image-card-wrapper">
       <Link to={`/image/${img._id}`}>
-        <img
-          src={
-            img.fileUrl.startsWith("http")
-              ? img.fileUrl
-              : `${API_URL}${img.fileUrl}`
-          }
-          alt={img.description}
-        />
-      </Link>
-      <div className="card-info">
-        <div className="card-author">
-          <FaUser style={{ marginRight: "0.4rem" }} />
-          {img.nickname || "Anonim"}
+        <div className="image-card">
+          <div className="image-card-container">
+            <img
+              src={
+                img.fileUrl.startsWith("http")
+                  ? img.fileUrl
+                  : `${API_URL}${img.fileUrl}`
+              }
+              alt={img.description}
+            />
+            <img
+              src={darkMode ? overlayDark : overlayLight}
+              alt="Overlay"
+              className="overlay-preview"
+            />
+          </div>
         </div>
-        <div className="card-description">{img.description}</div>
+      </Link>
+
+      <div className="card-controls">
+        <div className="toggle-mode">
+          <label className="switch">
+            <input
+              type="checkbox"
+              checked={!darkMode}
+              onChange={() => setDarkMode(!darkMode)}
+            />
+            <span className="slider"></span>
+          </label>
+          <span>{darkMode ? "Preview dark" : "Preview light"}</span>
+        </div>
+        <div className="like-count">
+          <FaHeart
+            style={{ marginRight: "0.3rem", color: "var(--light-purple)" }}
+          />
+          {img.likesCount || 0}
+        </div>
       </div>
     </div>
   );

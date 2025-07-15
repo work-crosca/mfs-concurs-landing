@@ -1,42 +1,108 @@
 .image-card {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  border-radius: 1rem;
-  color: #e5e5e5;
-  transition: all 0.3s ease;
-}
-
-
-.image-card img {
-  width: 100%;
-  cursor: pointer;
-  height: auto;
-  transition: all 0.3s ease;
-  border-radius: 1rem;
-}
-
-.image-card:hover {
-  background-color: rgba(256, 256, 256, 0.1);
-  border-radius: 1rem;
-}
-.image-card:hover img {
-  transform: scale(1.02);
-  border-radius: 1rem 1rem 0 0;
-}
-
-.card-info {
-  padding: 0.5rem 1rem;
-}
-
-.card-author {
-  display: flex;
-  align-items: center;
-  font-weight: 600;
-  margin-bottom: 0.3rem;
-}
-
-.card-description {
-  font-size: 0.9rem;
-  color: #c5c5c5;
-}
+   display: flex;
+   flex-direction: column;
+   overflow: hidden;
+   border-radius: 1rem;
+   color: #e5e5e5;
+   transition: all 0.3s ease;
+ }
+ 
+ .image-card-container {
+   position: relative;
+   overflow: hidden;
+   border-radius: 1rem;
+   aspect-ratio: 1536/969;
+ }
+ 
+ .image-card img {
+   width: 100%;
+   min-height: 100%;
+   object-fit: cover;
+   cursor: pointer;
+   height: auto;
+   transition: all 0.3s ease;
+ }
+ 
+ .overlay-preview {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   pointer-events: none;
+ }
+ 
+ .image-card:hover {
+   background-color: rgba(256, 256, 256, 0.1);
+ }
+ 
+ .image-card:hover img {
+   transform: scale(1.02);
+ }
+ 
+ /* controls under image */
+ .card-controls {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 0.5rem 0.2rem;
+   font-size: 0.85rem;
+   color: #e5e5e5;
+ }
+ 
+ .toggle-mode {
+   display: flex;
+   align-items: center;
+   gap: 0.4rem;
+ }
+ 
+ .like-count {
+   display: flex;
+   align-items: center;
+ }
+ 
+ /* switch style same as inscriere */
+ .switch {
+   position: relative;
+   display: inline-block;
+   width: 46px;
+   height: 22px;
+ }
+ 
+ .switch input {
+   opacity: 0;
+   width: 0;
+   height: 0;
+ }
+ 
+ .slider {
+   position: absolute;
+   cursor: pointer;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-color: #ccc;
+   border-radius: 22px;
+   transition: .4s;
+ }
+ 
+ .slider:before {
+   position: absolute;
+   content: "";
+   height: 16px;
+   width: 16px;
+   left: 3px;
+   bottom: 3px;
+   background-color: white;
+   border-radius: 50%;
+   transition: .4s;
+ }
+ 
+ input:checked + .slider {
+   background-color: var(--light-purple, #990ae3);
+ }
+ 
+ input:checked + .slider:before {
+   transform: translateX(24px);
+ }
