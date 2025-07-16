@@ -5,7 +5,7 @@ export default function CategoryToggle({ selected, onChange }) {
    const { t } = useTranslation();
  
    const options = [
-     { value: "all", label: t("inscriere.selectCategory") || "Toate" },
+     { value: "all", label: t("inscriere.all") || "Toate" },
      { value: "sport", label: t("inscriere.categorySport") },
      { value: "digital", label: t("inscriere.categoryDigital") },
      { value: "traditions", label: t("inscriere.categoryTraditions") },

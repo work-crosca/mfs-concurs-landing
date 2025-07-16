@@ -11,7 +11,7 @@ const EndDate = () => {
       <div className="timer-section-content">
         <h2 className="light">{t("endDate.title")}</h2>
 
-        <CountdownTimer targetDate="2025-08-09T23:59:59Z" />
+        <CountdownTimer targetDate="2025-08-10T23:59:59Z" />
 
         <p>
           {t("endDate.description")}

@@ -61,7 +61,7 @@
     "a7_footer": "Organizatorul își rezervă dreptul de a exclude din concurs orice proiect care contravine acestor prevederi, fără a fi necesară o notificare prealabilă."
   },
   "voting": {
-    "period": "10 – 19 august:",
+    "period": "15 iulie – 10 august:",
     "title": "Votul e în mâinile publicului!",
     "text1": "Toată lumea va putea vota designul favorit",
     "text2": "Pot vota un singur design per categorie",
@@ -120,7 +120,8 @@
     "previewLight": "Light Preview",
     "agree": "Confirm că sunt de acord cu",
     "conditions": "condițiile de participare",
-    "submit": "Trimite"
+    "submit": "Trimite",
+    "all": "Toate"
   },
   "footer": {
     "downloadApp": "Descarcă aplicația",

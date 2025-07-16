@@ -13,7 +13,7 @@ import qrCode from "../assets/mmoney.svg";
 export default function Footer() {
   const { t, i18n } = useTranslation();
 
-  // detectăm platforma pentru mobile
+  // isMobile?
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
@@ -22,33 +22,34 @@ export default function Footer() {
       <div className="footer-content">
         <div className="footer-column">
           <h4>{t("footer.downloadApp")}</h4>
-          <img src={logo} alt="moldcell money" className="download-badge"/>
-          {isMobile ? (
-            <a
-              style={{textDecoration: "none"}}
-              href={
-                isIOS
-                  ? "https://apps.apple.com/us/app/moldcell-money/id6443490483"
-                  : "https://play.google.com/store/apps/details?id=app.moldcell.mmoney"
-              }
-            >
-              <div className="store-icon">
-                {isIOS ? (
-                  <div
-                  className="download-app-btn">
-                    <IoLogoApple style={{fontSize: "2rem"}}/> AppStore
-                  </div>
-                ) : (
-                  <div
-                  className="download-app-btn">
-                    <IoLogoGooglePlaystore  style={{fontSize: "2rem"}}/> GooglePlay
-                  </div>
-                )}
-              </div>
-            </a>
-          ) : (
-            <img src={qrCode} alt="Scan QR to download" className="qr-code" />
-          )}
+          <div className="download-section">
+            <img src={logo} alt="moldcell money" className="download-badge" />
+            {isMobile ? (
+              <a
+                style={{ textDecoration: "none" }}
+                href={
+                  isIOS
+                    ? "https://apps.apple.com/us/app/moldcell-money/id6443490483"
+                    : "https://play.google.com/store/apps/details?id=app.moldcell.mmoney"
+                }
+              >
+                <div className="store-icon">
+                  {isIOS ? (
+                    <div className="download-app-btn">
+                      <IoLogoApple style={{ fontSize: "2rem" }} /> AppStore
+                    </div>
+                  ) : (
+                    <div className="download-app-btn">
+                      <IoLogoGooglePlaystore style={{ fontSize: "2rem" }} />{" "}
+                      GooglePlay
+                    </div>
+                  )}
+                </div>
+              </a>
+            ) : (
+              <img src={qrCode} alt="Scan QR to download" className="qr-code" />
+            )}
+          </div>
         </div>
 
         <div className="footer-column">

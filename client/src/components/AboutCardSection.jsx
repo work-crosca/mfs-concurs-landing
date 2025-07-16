@@ -26,7 +26,7 @@ const AboutCardSection = () => {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
   const steps = [
-    { icon: downloadIcon, text: t("about.step1") },
+   // { icon: downloadIcon, text: t("about.step1") },
     { icon: designIcon, text: t("about.step2") },
     { icon: uploadIcon, text: t("about.step3") },
     { icon: storyIcon, text: t("about.step4") },
