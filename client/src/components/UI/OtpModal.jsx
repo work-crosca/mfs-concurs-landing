@@ -1,24 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { FaSpinner } from "react-icons/fa";
 import "../../styles/otpModal.css";
+import otpImg from "../../assets/icons/otp.png?w=450&format=webp&as=src";
 
 export default function OtpModal({
   visible,
   email,
-  otpCode,
-  setOtpCode,
   onConfirm,
   loading,
   onClose,
 }) {
   const { t } = useTranslation();
   const [timeLeft, setTimeLeft] = useState(300);
+  const [otpArray, setOtpArray] = useState(["", "", "", "", "", ""]);
+  const inputsRef = useRef([]);
 
   useEffect(() => {
     if (!visible) return;
 
-    setTimeLeft(300); // reset timer after open modal
+    setTimeLeft(300);
+    setOtpArray(["", "", "", "", "", ""]);
     const timer = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev <= 1) {
@@ -28,7 +30,6 @@ export default function OtpModal({
         return prev - 1;
       });
     }, 1000);
-
     return () => clearInterval(timer);
   }, [visible]);
 
@@ -40,34 +41,67 @@ export default function OtpModal({
     return `${m}:${s}`;
   };
 
+  const handleChange = (index, value) => {
+    if (!/^[0-9]?$/.test(value)) return;
+    const newOtp = [...otpArray];
+    newOtp[index] = value;
+    setOtpArray(newOtp);
+    if (value && index < 5) {
+      if (!otpArray[index + 1]) {
+        inputsRef.current[index + 1].focus();
+      }
+    }
+  };
+
+  const handleKeyDown = (e, index) => {
+    if (e.key === "Backspace" && !otpArray[index] && index > 0) {
+      inputsRef.current[index - 1].focus();
+    }
+  };
+
+  const handleConfirm = () => {
+    const code = otpArray.join("");
+    onConfirm(code);
+  };
+
   if (!visible) return null;
 
   return (
     <div className="otp-modal-overlay">
       <div className="otp-modal">
+        <img src={otpImg} alt="OTP" />
         <p>
           {t("otpModal.confirmText")} <span>{email}</span>
         </p>
         <div className="otp-timer">
-          {timeLeft > 0
-            ? `${t("otpModal.expiresIn")} ${formatTime(timeLeft)}`
-            : t("otpModal.timerExpired")}
+          <p>
+            {timeLeft > 0
+              ? t("otpModal.expiresIn")
+              : t("otpModal.timerExpired")}
+          </p>
+          {formatTime(timeLeft)}
         </div>
 
-        <input
-          type="text"
-          inputMode="numeric"
-          pattern="[0-9]*"
-          placeholder={t("otpModal.placeholder")}
-          value={otpCode}
-          onChange={(e) => setOtpCode(e.target.value)}
-          disabled={timeLeft === 0}
-        />
+        <div className="otp-inputs">
+          {otpArray.map((digit, idx) => (
+            <input
+              key={idx}
+              type="text"
+              inputMode="numeric"
+              maxLength="1"
+              value={digit}
+              onChange={(e) => handleChange(idx, e.target.value)}
+              onKeyDown={(e) => handleKeyDown(e, idx)}
+              disabled={timeLeft === 0}
+              ref={(el) => (inputsRef.current[idx] = el)}
+            />
+          ))}
+        </div>
 
-        <div style={{display: "flex", flexDirection: "column", gap: "0.6rem", alignItems: "center", width: "100%"}}>
+        <div className="modal-controls">
           <button
             className="confirm-otp-btn"
-            onClick={onConfirm}
+            onClick={handleConfirm}
             disabled={loading || timeLeft === 0}
           >
             {loading ? (
@@ -81,7 +115,6 @@ export default function OtpModal({
           <button className="modal-close-btn" onClick={onClose}>
             {t("otpModal.closeBtn")}
           </button>
-          a
         </div>
       </div>
     </div>

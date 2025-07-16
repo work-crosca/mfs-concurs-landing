@@ -1,101 +1,156 @@
 .otp-modal-overlay {
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100vw;
-   height: 100vh;
-   background: rgba(256, 256, 256, 0.1);
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   z-index: 9999;
-   backdrop-filter: blur(2px);
- }
- 
- .otp-modal {
-   background: #111;
-   padding: 2rem;
-   border-radius: 1rem;
-   width: 90%;
-   max-width: 400px;
-   text-align: center;
-   box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
-   animation: fadeInScale 0.3s ease;
- }
- 
- .otp-modal p {
-   font-size: 1.2rem;
-   color: #e5e5e5; 
- }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(256, 256, 256, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  backdrop-filter: blur(2px);
+}
+.otp-modal .modal-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  justify-content: end;
+  align-items: center;
+  width: 100%;
+}
 
- .otp-modal  p span{
-   color: var(--light-purple);
- }
- 
- .otp-modal input[type="text"] {
-   width: 100%;
-   box-sizing: border-box;
-   padding: 0.8rem;
-   color: #e5e5e5;
-   margin: 1rem auto;
-   border: 2px solid var(--accent-color);
-   border-radius: 1rem;
-   outline: none;
-   background: #333;
-   font-size: 1rem;
- }
+.otp-modal {
+  background: #000;
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+  animation: fadeInScale 0.3s ease;
+}
 
- .otp-modal input[type="text"]::placeholder{
-   color: #e5e5e5;
- }
- 
- .otp-modal button{
-   cursor: pointer;
-   transition: all 0.3s;
-   box-sizing: border-box;
- }
+.otp-modal p {
+  font-size: 1.2rem;
+  color: #e5e5e5;
+}
 
- .otp-modal .confirm-otp-btn {
-   background: #990ae3;
-   color: white;
-   border: none;
-   padding: 0.8rem;
-   width: 100%;
-   font-size: 1rem;
-   border-radius: 1rem;
-   cursor: pointer;
- }
- .confirm-otp-btn:disabled {
-   filter: grayscale(1);
-   cursor: not-allowed;
- }
- 
- .otp-modal .confirm-otp-btn:hover {
-   background-color: #b64ce6;
- }
- 
- .otp-modal .modal-close-btn{
-   background: none;
-   color: #e5e5e5;
-   border: none;
-   font-size: 1rem;
- }
- .otp-modal .modal-close-btn:hover{
-   text-decoration: underline;
- }
+.otp-modal img {
+  aspect-ratio: 1/1;
+  width: 100px;
+  height: auto;
+}
 
- @keyframes fadeInScale {
-   from {
-     opacity: 0;
-     transform: scale(0.9);
-   }
-   to {
-     opacity: 1;
-     transform: scale(1);
-   }
+@media (max-width: 769px) {
+  .otp-modal {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 100vw;
+    max-height: 100vh;
+    box-sizing: border-box;
+  }
+
+  .otp-modal img {
+    width: 80%;
+  }
+
+  body.modal-open {
+   overflow: hidden;
  }
- .otp-modal .otp-timer {
-   margin: 1rem auto;
-   font-size: 0.9rem;
-   color: #ccc;
- }
+}
+
+.otp-modal p span {
+  color: var(--light-purple);
+  margin: auto;
+}
+
+.otp-inputs {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+  margin: 1rem 0;
+  background: #111;
+  width: 100%;
+}
+
+.otp-inputs input {
+  width: calc(100% / 6);
+  height: 3rem;
+  font-size: 1.5rem;
+  text-align: center;
+  border: 2px solid #990ae3;
+  border-radius: 8px;
+  background: transparent;
+  color: #fff;
+}
+
+.otp-inputs input:disabled {
+  background: #333;
+  color: #999;
+}
+
+.modal-controls button {
+  cursor: pointer;
+  transition: all 0.3s;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.modal-controls .confirm-otp-btn {
+  background: var(--base-color);
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+.confirm-otp-btn:disabled {
+  filter: grayscale(1);
+  cursor: not-allowed;
+}
+
+.modal-controls .confirm-otp-btn:hover {
+  background-color: #b64ce6;
+}
+
+.modal-controls .modal-close-btn {
+  background: none;
+  color: #e5e5e5;
+  border: none;
+  font-size: 1rem;
+}
+.modal-controls .modal-close-btn:hover {
+  text-decoration: underline;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.otp-modal .otp-timer {
+  margin: 1rem auto;
+  font-size: 4rem;
+  font-weight: bold;
+  color: #fff;
+  line-height: 100%;
+  display: block;
+}
+
+.otp-modal .otp-timer p {
+  font-size: 1rem;
+  margin-bottom: 0;
+  color: #ccc;
+  font-variant-numeric: tabular-nums;
+}
