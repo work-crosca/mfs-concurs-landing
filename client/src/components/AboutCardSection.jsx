@@ -76,7 +76,7 @@ const AboutCardSection = () => {
           <small>{t("about.criteria")}</small>
 
           <div style={{ marginTop: "1rem" }}>
-            <a href="/link-catre-regulament" className="link-regulament">
+            <a href="/terms/Regulament_Moldcell_Visa_Card_concurs_de_design_Visa.pdf" className="link-regulament">
               {t("about.rulesLink")}
             </a>
           </div>
