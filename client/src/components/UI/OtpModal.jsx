@@ -14,11 +14,20 @@ export default function OtpModal({
   const { t } = useTranslation();
   const [timeLeft, setTimeLeft] = useState(300);
   const [otpArray, setOtpArray] = useState(["", "", "", "", "", ""]);
+  const [shake, setShake] = useState(false);
   const inputsRef = useRef([]);
 
   useEffect(() => {
-    if (!visible) return;
+    if (visible) {
+      document.body.classList.add("modal-open");
+    } else {
+      document.body.classList.remove("modal-open");
+    }
+    return () => document.body.classList.remove("modal-open");
+  }, [visible]);
 
+  useEffect(() => {
+    if (!visible) return;
     setTimeLeft(300);
     setOtpArray(["", "", "", "", "", ""]);
     const timer = setInterval(() => {
@@ -34,11 +43,13 @@ export default function OtpModal({
   }, [visible]);
 
   const formatTime = (seconds) => {
-    const m = Math.floor(seconds / 60)
-      .toString()
-      .padStart(2, "0");
+    const m = Math.floor(seconds / 60).toString().padStart(2, "0");
     const s = (seconds % 60).toString().padStart(2, "0");
     return `${m}:${s}`;
+  };
+
+  const handleFocus = (index) => {
+    inputsRef.current[index].setSelectionRange(0, 1);
   };
 
   const handleChange = (index, value) => {
@@ -47,20 +58,30 @@ export default function OtpModal({
     newOtp[index] = value;
     setOtpArray(newOtp);
     if (value && index < 5) {
-      if (!otpArray[index + 1]) {
-        inputsRef.current[index + 1].focus();
-      }
+      inputsRef.current[index + 1].focus();
     }
   };
 
   const handleKeyDown = (e, index) => {
-    if (e.key === "Backspace" && !otpArray[index] && index > 0) {
-      inputsRef.current[index - 1].focus();
+    if (e.key === "Backspace") {
+      e.preventDefault();
+      const newOtp = [...otpArray];
+      if (otpArray[index]) {
+        newOtp[index] = "";
+        setOtpArray(newOtp);
+      } else if (index > 0) {
+        inputsRef.current[index - 1].focus();
+      }
     }
   };
 
   const handleConfirm = () => {
     const code = otpArray.join("");
+    if (code.length < 6) {
+      setShake(true);
+      setTimeout(() => setShake(false), 400);
+      return;
+    }
     onConfirm(code);
   };
 
@@ -75,25 +96,28 @@ export default function OtpModal({
         </p>
         <div className="otp-timer">
           <p>
-            {timeLeft > 0
-              ? t("otpModal.expiresIn")
-              : t("otpModal.timerExpired")}
+            {timeLeft > 0 ? t("otpModal.expiresIn") : t("otpModal.timerExpired")}
           </p>
           {formatTime(timeLeft)}
         </div>
 
-        <div className="otp-inputs">
+        <div className={`otp-inputs ${shake ? "shake" : ""}`}>
           {otpArray.map((digit, idx) => (
             <input
               key={idx}
-              type="text"
-              inputMode="numeric"
+              type="tel"
               maxLength="1"
               value={digit}
               onChange={(e) => handleChange(idx, e.target.value)}
               onKeyDown={(e) => handleKeyDown(e, idx)}
+              onFocus={() => handleFocus(idx)}
               disabled={timeLeft === 0}
               ref={(el) => (inputsRef.current[idx] = el)}
+              style={{
+                fontSize: "18px",
+                userSelect: "none",
+                caretColor: "transparent",
+              }}
             />
           ))}
         </div>

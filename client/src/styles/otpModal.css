@@ -53,6 +53,7 @@
     max-width: 100vw;
     max-height: 100vh;
     box-sizing: border-box;
+    border-radius: none;
   }
 
   .otp-modal img {
@@ -63,6 +64,7 @@
    overflow: hidden;
  }
 }
+
 
 .otp-modal p span {
   color: var(--light-purple);
@@ -87,7 +89,12 @@
   border-radius: 8px;
   background: transparent;
   color: #fff;
+  caret-color: transparent; 
 }
+
+.otp-inputs input::selection {
+   background: transparent;
+ }
 
 .otp-inputs input:disabled {
   background: #333;
@@ -154,3 +161,13 @@
   color: #ccc;
   font-variant-numeric: tabular-nums;
 }
+
+@keyframes shake {
+   0%, 100% { transform: translateX(0); }
+   20%, 60% { transform: translateX(-8px); }
+   40%, 80% { transform: translateX(8px); }
+ }
+ 
+ .otp-inputs.shake {
+   animation: shake 0.4s;
+ }
