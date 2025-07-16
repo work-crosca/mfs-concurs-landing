@@ -148,7 +148,7 @@
     "placeholder": "Cod OTP",
     "confirmBtn": "Confirmă OTP",
     "expired": "Codul a expirat",
-    "close": "Anulare",
+    "closeBtn": "Anulare",
     "expiresIn": "Expiră în",
     "timerExpired": "OTP expirat, solicită altul"
   }
