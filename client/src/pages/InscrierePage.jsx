@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { FaSpinner, FaUpload } from "react-icons/fa";
 import "../styles/InscrierePage.css";
+import OtpModal from "../components/UI/OtpModal";
 import overlayDark from "../assets/shablon/VISA-shablon-dark.png?w=800&format=webp&as=src";
 import overlayLight from "../assets/shablon/VISA-shablon-light.png?w=800&format=webp&as=src";
 
@@ -20,6 +21,10 @@ export default function InscrierePage() {
   const [toast, setToast] = useState(null);
   const [loading, setLoading] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
+
+  const [otpModalVisible, setOtpModalVisible] = useState(false);
+  const [otpCode, setOtpCode] = useState("");
+  const [otpLoading, setOtpLoading] = useState(false);
 
   const fileInputRef = useRef(null);
 
@@ -63,6 +68,69 @@ export default function InscrierePage() {
     }
 
     try {
+      setOtpLoading(true);
+      const res = await fetch(
+        `${import.meta.env.VITE_APP_API_URL}/api/send-otp`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: formData.email }),
+        }
+      );
+      const data = await res.json();
+
+      if (data.success) {
+        setOtpModalVisible(true);
+        setToast({ type: "success", message: "OTP trimis pe email!" });
+      } else {
+        if (data.code === 1) {
+          setToast({ type: "error", message: "Email invalid." });
+        } else if (data.code === -2) {
+          setToast({
+            type: "error",
+            message: "Date incorecte trimise serverului.",
+          });
+        } else {
+          setToast({ type: "error", message: data.message || "Eroare OTP." });
+        }
+      }
+    } catch (err) {
+      console.error(err);
+      setToast({ type: "error", message: "Eroare la trimiterea OTP." });
+    } finally {
+      setOtpLoading(false);
+    }
+  };
+
+  const handleOtpConfirm = async () => {
+    try {
+      setOtpLoading(true);
+      const res = await fetch(
+        `${import.meta.env.VITE_APP_API_URL}/api/verify-otp`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: formData.email, code: otpCode }),
+        }
+      );
+      const data = await res.json();
+
+      if (data.success) {
+        await handleUpload();
+        setOtpModalVisible(false);
+      } else {
+        setToast({ type: "error", message: data.message || "Cod invalid." });
+      }
+    } catch (err) {
+      console.error(err);
+      setToast({ type: "error", message: "Eroare la verificarea OTP." });
+    } finally {
+      setOtpLoading(false);
+    }
+  };
+
+  const handleUpload = async () => {
+    try {
       setLoading(true);
       const newFileName = slugify(formData.nickname) + ".png";
       const renamedFile = new File([formData.file], newFileName, {
@@ -104,9 +172,10 @@ export default function InscrierePage() {
       });
       setPreviewUrl(null);
       setAgree(false);
+      setOtpCode("");
     } catch (err) {
       console.error(err);
-      setToast({ type: "error", message: "Eroare la trimitere." });
+      setToast({ type: "error", message: "Eroare la upload." });
     } finally {
       setLoading(false);
     }
@@ -190,7 +259,6 @@ export default function InscrierePage() {
                 ref={fileInputRef}
                 style={{ display: "none" }}
                 onChange={(e) => handleFileChange(e.target.files[0])}
-                required
               />
             </div>
 
@@ -261,8 +329,8 @@ export default function InscrierePage() {
                 </span>
               </label>
 
-              <button type="submit" disabled={loading}>
-                {loading ? (
+              <button type="submit" disabled={loading || otpLoading}>
+                {loading || otpLoading ? (
                   <FaSpinner className="spinner-btn" />
                 ) : (
                   t("inscriere.submit")
@@ -272,6 +340,15 @@ export default function InscrierePage() {
           </div>
         </form>
       </motion.section>
+
+      <OtpModal
+        visible={otpModalVisible}
+        email={formData.email}
+        otpCode={otpCode}
+        setOtpCode={setOtpCode}
+        onConfirm={handleOtpConfirm}
+        loading={otpLoading}
+      />
 
       {toast && <div className={`toast ${toast.type}`}>{toast.message}</div>}
     </div>
