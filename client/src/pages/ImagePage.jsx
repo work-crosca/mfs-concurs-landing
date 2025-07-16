@@ -5,6 +5,7 @@ import { IoHome } from "react-icons/io5";
 import overlayDark from "../assets/shablon/VISA-shablon-dark.png";
 import overlayLight from "../assets/shablon/VISA-shablon-light.png";
 import "../styles/ImagePage.css";
+import Loading from "../components/UI/Loading";
 import LikeButton from "../components/UI/LikeButton";
 
 export default function ImagePage() {
@@ -45,8 +46,8 @@ export default function ImagePage() {
     document.body.classList.toggle("light-mode", !darkMode);
   }, [darkMode]);
 
-  if (loading) return <div className="loading">{t("imagePage.loading")}</div>;
-  if (!image) return <div className="loading">{t("imagePage.notFound")}</div>;
+  if (loading) return <Loading text={t("imagePage.loading")} />;
+  if (!image) return <Loading text={t("imagePage.notFound")} />;
 
   return (
     <div className="image-page">
