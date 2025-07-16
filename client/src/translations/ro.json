@@ -142,5 +142,14 @@
     "date": "Data",
     "description": "Descriere",
     "likes": "Like-uri"
+  },
+  "otpModal": {
+    "confirmText": "Confirmă codul OTP trimis la",
+    "placeholder": "Cod OTP",
+    "confirmBtn": "Confirmă OTP",
+    "expired": "Codul a expirat",
+    "close": "Anulare",
+    "expiresIn": "Expiră în",
+    "timerExpired": "OTP expirat, solicită altul"
   }
 }

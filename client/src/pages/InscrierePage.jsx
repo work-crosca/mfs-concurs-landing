@@ -348,6 +348,7 @@ export default function InscrierePage() {
         setOtpCode={setOtpCode}
         onConfirm={handleOtpConfirm}
         loading={otpLoading}
+        onClose={() => setOtpModalVisible(false)} 
       />
 
       {toast && <div className={`toast ${toast.type}`}>{toast.message}</div>}

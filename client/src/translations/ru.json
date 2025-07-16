@@ -143,5 +143,14 @@
     "date": "Data",
     "description": "Descriere",
     "likes": "Like-uri"
+  },
+  "otpModal": {
+    "confirmText": "Подтвердите OTP-код, отправленный на",
+    "placeholder": "Введите OTP-код",
+    "confirmBtn": "Подтвердить OTP",
+    "expired": "Код истёк",
+    "close": "Отмена",
+    "expiresIn": "Истекает через",
+    "timerExpired": "OTP истёк, запросите новый"
   }
 }
