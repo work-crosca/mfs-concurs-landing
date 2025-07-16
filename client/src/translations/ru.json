@@ -132,5 +132,15 @@
   "notfound": {
     "text": "Страница не найдена.",
     "button": "На главную"
+  },
+  "imagePage": {
+    "backToGallery": "Galerie",
+    "loading": "Se încarcă...",
+    "notFound": "Imaginea nu a fost găsită.",
+    "author": "Autor",
+    "category": "Categorie",
+    "date": "Data",
+    "description": "Descriere",
+    "likes": "Like-uri"
   }
 }

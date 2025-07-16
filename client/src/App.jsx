@@ -5,6 +5,7 @@ import InscrierePage from "./pages/InscrierePage";
 import Footer from "./components/Footer";
 import Gallery from "./pages/Gallery";
 import NotFound from "./pages/NotFound";
+import ImagePage from "./pages/ImagePage";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/inscriere" element={<InscrierePage />} />
         <Route path="/gallery" element={<Gallery />} />
-
+        <Route path="/image/:id" element={<ImagePage />} />
         <Route path="*" element={<NotFound />} />
         {/* ruta pentru galerie */}
         {/*<Route path="/votare" element={<VotarePage />} /> */}
