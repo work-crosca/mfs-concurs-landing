@@ -17,13 +17,16 @@ export default function OtpModal({
   const [shake, setShake] = useState(false);
   const inputsRef = useRef([]);
 
+  // Blochează scroll-ul direct prin body.style.overflow
   useEffect(() => {
     if (visible) {
-      document.body.classList.add("modal-open");
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.classList.remove("modal-open");
+      document.body.style.overflow = "";
     }
-    return () => document.body.classList.remove("modal-open");
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [visible]);
 
   useEffect(() => {
