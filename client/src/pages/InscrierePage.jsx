@@ -136,12 +136,14 @@ export default function InscrierePage() {
                 className="image-preview-wrapper"
                 style={{ backgroundColor: previewUrl ? "transparent" : "#111" }}
               >
-                {previewUrl && (
+                {previewUrl ? (
                   <img
                     src={previewUrl}
                     alt="Preview user upload"
                     className="user-preview"
                   />
+                ) : (
+                  <div className="no-image-text">Nicio imagine selectată</div>
                 )}
                 <img
                   src={darkMode ? overlayDark : overlayLight}
@@ -261,7 +263,7 @@ export default function InscrierePage() {
 
               <button type="submit" disabled={loading}>
                 {loading ? (
-                  <FaSpinner className="spinner" />
+                  <FaSpinner className="spinner-btn" />
                 ) : (
                   t("inscriere.submit")
                 )}
