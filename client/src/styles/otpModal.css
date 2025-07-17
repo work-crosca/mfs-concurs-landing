@@ -55,7 +55,7 @@
     max-width: 100vw;
     max-height: 100vh;
     box-sizing: border-box;
-    border-radius: none;
+    border-radius: none!important;
   }
 
   .otp-modal img {

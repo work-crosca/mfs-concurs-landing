@@ -7,6 +7,8 @@ import OtpModal from "../components/UI/OtpModal";
 import overlayDark from "../assets/shablon/VISA-shablon-dark.png?w=800&format=webp&as=src";
 import overlayLight from "../assets/shablon/VISA-shablon-light.png?w=800&format=webp&as=src";
 
+import EndDate from "../components/EndDate";
+
 export default function InscrierePage() {
   const { t } = useTranslation();
   const [formData, setFormData] = useState({
@@ -110,15 +112,15 @@ export default function InscrierePage() {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: formData.email, code }), 
+          body: JSON.stringify({ email: formData.email, code }),
         }
       );
       const data = await res.json();
-  
+
       if (data.success) {
         await handleUpload();
         setOtpModalVisible(false);
-        return true; 
+        return true;
       } else {
         setToast({ type: "error", message: data.message || "Cod invalid." });
         return false;
@@ -126,7 +128,7 @@ export default function InscrierePage() {
     } catch (err) {
       console.error(err);
       setToast({ type: "error", message: "Eroare la verificarea OTP." });
-      return false; 
+      return false;
     } finally {
       setOtpLoading(false);
     }
@@ -193,168 +195,175 @@ export default function InscrierePage() {
   }
 
   return (
-    <div className={`inscriere-page ${darkMode ? "dark" : "light"}`}>
-      <motion.section
-        className="inscriere-container"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <form onSubmit={handleSubmit} className="inscriere-form">
-          <h1>{t("inscriere.title")}</h1>
-          <div className="form-content">
-            <div className="form-left">
-              <div
-                className="image-preview-wrapper"
-                style={{ backgroundColor: previewUrl ? "transparent" : "#111" }}
-              >
-                {previewUrl ? (
+    <>
+      <EndDate />
+      <div className={`inscriere-page ${darkMode ? "dark" : "light"}`}>
+        <motion.section
+          className="inscriere-container"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <form onSubmit={handleSubmit} className="inscriere-form">
+            <h1>{t("inscriere.title")}</h1>
+            <div className="form-content">
+              <div className="form-left">
+                <div
+                  className="image-preview-wrapper"
+                  style={{
+                    backgroundColor: previewUrl ? "transparent" : "#111",
+                  }}
+                >
+                  {previewUrl ? (
+                    <img
+                      src={previewUrl}
+                      alt="Preview user upload"
+                      className="user-preview"
+                    />
+                  ) : (
+                    <div className="no-image-text">Nicio imagine selectată</div>
+                  )}
                   <img
-                    src={previewUrl}
-                    alt="Preview user upload"
-                    className="user-preview"
+                    src={darkMode ? overlayDark : overlayLight}
+                    alt="Overlay"
+                    className="overlay-preview"
                   />
-                ) : (
-                  <div className="no-image-text">Nicio imagine selectată</div>
-                )}
-                <img
-                  src={darkMode ? overlayDark : overlayLight}
-                  alt="Overlay"
-                  className="overlay-preview"
+                </div>
+
+                <div className="toggle-mode">
+                  <label className="switch">
+                    <input
+                      type="checkbox"
+                      checked={!darkMode}
+                      onChange={() => setDarkMode(!darkMode)}
+                    />
+                    <span className="slider"></span>
+                  </label>
+                  <span>
+                    {darkMode
+                      ? t("inscriere.previewDark")
+                      : t("inscriere.previewLight")}
+                  </span>
+                </div>
+
+                <div
+                  className="file-dropzone"
+                  onDragOver={(e) => e.preventDefault()}
+                  onDrop={handleFileDrop}
+                  onClick={() => fileInputRef.current.click()}
+                >
+                  <FaUpload size={30} />
+                  <p>
+                    {formData.file
+                      ? t("inscriere.dropzoneSelected", {
+                          fileName: formData.file.name,
+                        })
+                      : t("inscriere.dropzoneDefault")}
+                  </p>
+                </div>
+
+                <input
+                  type="file"
+                  accept=".png"
+                  ref={fileInputRef}
+                  style={{ display: "none" }}
+                  onChange={(e) => handleFileChange(e.target.files[0])}
                 />
               </div>
 
-              <div className="toggle-mode">
-                <label className="switch">
-                  <input
-                    type="checkbox"
-                    checked={!darkMode}
-                    onChange={() => setDarkMode(!darkMode)}
-                  />
-                  <span className="slider"></span>
-                </label>
-                <span>
-                  {darkMode
-                    ? t("inscriere.previewDark")
-                    : t("inscriere.previewLight")}
-                </span>
-              </div>
-
-              <div
-                className="file-dropzone"
-                onDragOver={(e) => e.preventDefault()}
-                onDrop={handleFileDrop}
-                onClick={() => fileInputRef.current.click()}
-              >
-                <FaUpload size={30} />
-                <p>
-                  {formData.file
-                    ? t("inscriere.dropzoneSelected", {
-                        fileName: formData.file.name,
-                      })
-                    : t("inscriere.dropzoneDefault")}
-                </p>
-              </div>
-
-              <input
-                type="file"
-                accept=".png"
-                ref={fileInputRef}
-                style={{ display: "none" }}
-                onChange={(e) => handleFileChange(e.target.files[0])}
-              />
-            </div>
-
-            <div className="form-right">
-              <input
-                type="text"
-                name="nickname"
-                placeholder={t("inscriere.nickname")}
-                value={formData.nickname}
-                onChange={handleChange}
-                required
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder={t("inscriere.email")}
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-              <select
-                name="category"
-                value={formData.category}
-                onChange={handleChange}
-                required
-              >
-                <option value="">{t("inscriere.selectCategory")}</option>
-                <option value="sport">{t("inscriere.categorySport")}</option>
-                <option value="digital">
-                  {t("inscriere.categoryDigital")}
-                </option>
-                <option value="traditions">
-                  {t("inscriere.categoryTraditions")}
-                </option>
-                <option value="nature">{t("inscriere.categoryNature")}</option>
-                <option value="freestyle">
-                  {t("inscriere.categoryFreestyle")}
-                </option>
-              </select>
-              <textarea
-                name="description"
-                placeholder={t("inscriere.descriptionPlaceholder")}
-                value={formData.description}
-                onChange={handleChange}
-                maxLength={150}
-                rows="3"
-              />
-              <div className="description-counter">
-                {formData.description.length}/150
-              </div>
-
-              <label className="checkbox-agreement">
+              <div className="form-right">
                 <input
-                  type="checkbox"
-                  checked={agree}
-                  onChange={(e) => setAgree(e.target.checked)}
+                  type="text"
+                  name="nickname"
+                  placeholder={t("inscriere.nickname")}
+                  value={formData.nickname}
+                  onChange={handleChange}
                   required
                 />
-                <span>
-                  {t("inscriere.agree")}{" "}
-                  <a
-                    href="/terms/Regulament_Moldcell_Visa_Card_concurs_de_design_Visa.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {t("inscriere.conditions")}
-                  </a>
-                </span>
-              </label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder={t("inscriere.email")}
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+                <select
+                  name="category"
+                  value={formData.category}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">{t("inscriere.selectCategory")}</option>
+                  <option value="sport">{t("inscriere.categorySport")}</option>
+                  <option value="digital">
+                    {t("inscriere.categoryDigital")}
+                  </option>
+                  <option value="traditions">
+                    {t("inscriere.categoryTraditions")}
+                  </option>
+                  <option value="nature">
+                    {t("inscriere.categoryNature")}
+                  </option>
+                  <option value="freestyle">
+                    {t("inscriere.categoryFreestyle")}
+                  </option>
+                </select>
+                <textarea
+                  name="description"
+                  placeholder={t("inscriere.descriptionPlaceholder")}
+                  value={formData.description}
+                  onChange={handleChange}
+                  maxLength={150}
+                  rows="3"
+                />
+                <div className="description-counter">
+                  {formData.description.length}/150
+                </div>
 
-              <button type="submit" disabled={loading || otpLoading}>
-                {loading || otpLoading ? (
-                  <FaSpinner className="spinner-btn" />
-                ) : (
-                  t("inscriere.submit")
-                )}
-              </button>
+                <label className="checkbox-agreement">
+                  <input
+                    type="checkbox"
+                    checked={agree}
+                    onChange={(e) => setAgree(e.target.checked)}
+                    required
+                  />
+                  <span>
+                    {t("inscriere.agree")}{" "}
+                    <a
+                      href="/terms/Regulament_Moldcell_Visa_Card_concurs_de_design_Visa.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {t("inscriere.conditions")}
+                    </a>
+                  </span>
+                </label>
+
+                <button type="submit" disabled={loading || otpLoading}>
+                  {loading || otpLoading ? (
+                    <FaSpinner className="spinner-btn" />
+                  ) : (
+                    t("inscriere.submit")
+                  )}
+                </button>
+              </div>
             </div>
-          </div>
-        </form>
-      </motion.section>
+          </form>
+        </motion.section>
 
-      <OtpModal
-        visible={otpModalVisible}
-        email={formData.email}
-        otpCode={otpCode}
-        setOtpCode={setOtpCode}
-        onConfirm={handleOtpConfirm}
-        loading={otpLoading}
-        onClose={() => setOtpModalVisible(false)} 
-      />
+        <OtpModal
+          visible={otpModalVisible}
+          email={formData.email}
+          otpCode={otpCode}
+          setOtpCode={setOtpCode}
+          onConfirm={handleOtpConfirm}
+          loading={otpLoading}
+          onClose={() => setOtpModalVisible(false)}
+        />
 
-      {toast && <div className={`toast ${toast.type}`}>{toast.message}</div>}
-    </div>
+        {toast && <div className={`toast ${toast.type}`}>{toast.message}</div>}
+      </div>
+    </>
   );
 }
