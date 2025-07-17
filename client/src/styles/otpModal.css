@@ -14,7 +14,8 @@
 .otp-modal .modal-controls {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  padding-top: 2rem;
+  gap: 2rem;
   justify-content: end;
   align-items: center;
   width: 100%;
@@ -38,7 +39,8 @@
 
 .otp-modal img {
   aspect-ratio: 1/1;
-  width: 100px;
+  width: 224px;
+  max-width: 100%;
   height: auto;
 }
 
@@ -87,7 +89,7 @@
   text-align: center;
   border: 2px solid #990ae3;
   border-radius: 8px;
-  background: transparent;
+  background: linear-gradient(rgba(51, 51, 51, 0.5), rgb(0, 0, 0));
   color: #fff;
   caret-color: transparent; 
 }
@@ -147,7 +149,7 @@
   }
 }
 .otp-modal .otp-timer {
-  margin: 1rem auto;
+  margin: 1rem auto 2rem auto;
   font-size: 4rem;
   font-weight: bold;
   color: #fff;
@@ -170,4 +172,8 @@
  
  .otp-inputs.shake {
    animation: shake 0.4s;
+ }
+
+ .otp-inputs.shake input{
+   border-color: #FF3B3E;
  }

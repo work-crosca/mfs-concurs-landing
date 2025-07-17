@@ -78,15 +78,21 @@ export default function OtpModal({
     }
   };
 
-  const handleConfirm = () => {
-    const code = otpArray.join("");
-    if (code.length < 6) {
-      setShake(true);
-      setTimeout(() => setShake(false), 400);
-      return;
-    }
-    onConfirm(code);
-  };
+  const handleConfirm = async () => {
+   const code = otpArray.join("");
+ 
+   if (code.length < 6) {
+     setShake(true);
+     setTimeout(() => setShake(false), 400);
+     return;
+   }
+ 
+   const isValid = await onConfirm(code); 
+   if (!isValid) {
+     setShake(true);
+     setTimeout(() => setShake(false), 400);
+   }
+ };
 
   if (!visible) return null;
 

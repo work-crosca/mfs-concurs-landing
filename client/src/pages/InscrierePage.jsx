@@ -102,7 +102,7 @@ export default function InscrierePage() {
     }
   };
 
-  const handleOtpConfirm = async () => {
+  const handleOtpConfirm = async (code) => {
     try {
       setOtpLoading(true);
       const res = await fetch(
@@ -110,20 +110,23 @@ export default function InscrierePage() {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: formData.email, code: otpCode }),
+          body: JSON.stringify({ email: formData.email, code }), 
         }
       );
       const data = await res.json();
-
+  
       if (data.success) {
         await handleUpload();
         setOtpModalVisible(false);
+        return true; 
       } else {
         setToast({ type: "error", message: data.message || "Cod invalid." });
+        return false;
       }
     } catch (err) {
       console.error(err);
       setToast({ type: "error", message: "Eroare la verificarea OTP." });
+      return false; 
     } finally {
       setOtpLoading(false);
     }
