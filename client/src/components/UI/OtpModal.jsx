@@ -17,7 +17,6 @@ export default function OtpModal({
   const [shake, setShake] = useState(false);
   const inputsRef = useRef([]);
 
-  // Blochează scroll-ul direct prin body.style.overflow
   useEffect(() => {
     if (visible) {
       document.body.style.overflow = "hidden";

@@ -10,7 +10,12 @@ import overlayLight from "../assets/shablon/VISA-shablon-light.png?w=800&format=
 import EndDate from "../components/EndDate";
 
 export default function InscrierePage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const getLangId = () => {
+    const lang = i18n.language;
+    if (lang === "ru") return 2;
+    return 1;
+  };
   const [formData, setFormData] = useState({
     nickname: "",
     email: "",
@@ -72,11 +77,11 @@ export default function InscrierePage() {
     try {
       setOtpLoading(true);
       const res = await fetch(
-        `${import.meta.env.VITE_APP_API_URL}/api/send-otp`,
+        `${import.meta.env.VITE_APP_API_URL}/api/otp/send-otp`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: formData.email }),
+          body: JSON.stringify({ email: formData.email, langId: getLangId() }),
         }
       );
       const data = await res.json();
@@ -108,7 +113,7 @@ export default function InscrierePage() {
     try {
       setOtpLoading(true);
       const res = await fetch(
-        `${import.meta.env.VITE_APP_API_URL}/api/verify-otp`,
+        `${import.meta.env.VITE_APP_API_URL}/api/otp/verify-otp`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
