@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { motion, useInView } from "framer-motion";
-import CountdownTimer from "./UI/CountdownTimer";
 import "../styles/VotingBlock.css";
 import hammerImage from "../assets/home/hammer.png?w=800&format=webp&as=src";
 

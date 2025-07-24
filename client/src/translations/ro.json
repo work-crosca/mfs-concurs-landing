@@ -163,5 +163,13 @@
     "sending": "Se trimite...",
     "close": "Închide",
     "invalidEmail": "Te rugăm să introduci o adresă de email validă."
+  },
+  "chooseDesign": {
+    "period": "Perioada de votare este deschisă!",
+    "title": "Tu alegi cum arată cardul tău Moldcell Money.",
+    "text1": "Descoperă toate designurile participante la concurs.",
+    "text2": "Dă like imaginilor care te inspiră.",
+    "text3": "Cele mai votate 5 creații vor merge în marea finală.",
+    "text4": "Grăbește-te, votul tău contează!"
   }
 }

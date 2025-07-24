@@ -9,6 +9,7 @@ import Loading from "../components/UI/Loading";
 import LikeButton from "../components/UI/LikeButton";
 import OtpModal from "../components/UI/OtpModal";
 import EmailModal from "../components/UI/EmailModal";
+import ChooseYourDesign from "../components/ChooseYourDesign";
 
 export default function ImagePage() {
   const { t, i18n } = useTranslation();
@@ -177,7 +178,6 @@ export default function ImagePage() {
           onToggle={() => handleRequestOtp(!liked)}
         />
       </div>
-
       <div className="info-box">
         <div className="info-meta">
           <span>
@@ -195,6 +195,8 @@ export default function ImagePage() {
           <strong>{t("imagePage.description")}:</strong> {image.description}
         </p>
       </div>
+
+      <ChooseYourDesign />
 
       {/* === Modal Email + OTP === */}
       {emailModalVisible && (
