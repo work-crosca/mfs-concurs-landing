@@ -186,3 +186,25 @@
    color: #545556;
    margin-right: 4px;
 }
+
+.login-disclaimer {
+  background: rgba(255, 40, 177, 0.1);
+  color: rgba(255, 40, 177, 1);
+  padding: 0.75rem 1.25rem;
+  margin: 0rem 0rem 1rem 0;
+  border-radius: 1rem;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.login-disclaimer button{
+  background: none;
+  border: none;
+  color: #FFF;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.login-disclaimer button:hover{
+  text-decoration: dashed;
+}

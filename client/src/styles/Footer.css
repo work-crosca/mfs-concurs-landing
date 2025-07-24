@@ -56,7 +56,7 @@
   color: rgba(229, 229, 229, 0.8);
 }
 
-.footer-column p.tel {
+.footer-column p.contact {
   display: flex;
   flex-direction: row;
   justify-content: start;
@@ -66,13 +66,13 @@
   font-style: normal;
 }
 
-.footer-column p.tel a {
+.footer-column p.contact a {
   color: #e5e5e5;
   transition: all 0.3s ease;
   text-decoration: none;
 }
 
-.footer-column p.tel a:hover {
+.footer-column p.contact a:hover {
   text-decoration: underline;
 }
 

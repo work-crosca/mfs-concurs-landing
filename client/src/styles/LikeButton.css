@@ -8,6 +8,10 @@
    user-select: none;
    transition: transform 0.2s;
  }
+
+ .like-button:hover .heart{
+  transform: scale(1.05);
+ }
  
  .like-button .count{
    color: #e5e5e5;
@@ -21,3 +25,18 @@
  .heart.liked {
    color: var(--base-violet, #990ae3);
  }
+
+.like-tooltip {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #222;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  z-index: 10;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}

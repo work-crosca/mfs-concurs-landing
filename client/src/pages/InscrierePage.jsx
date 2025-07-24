@@ -123,6 +123,7 @@ export default function InscrierePage() {
       const data = await res.json();
 
       if (data.success) {
+        setToast({ type: "success", message: "Cod OTP verificat cu succes!" });
         await handleUpload();
         setOtpModalVisible(false);
         return true;
@@ -226,7 +227,7 @@ export default function InscrierePage() {
                       className="user-preview"
                     />
                   ) : (
-                    <div className="no-image-text">Nicio imagine selectată</div>
+                    <div className="no-image-text">{t("inscriere.noImage")}</div>
                   )}
                   <img
                     src={darkMode ? overlayDark : overlayLight}

@@ -16,7 +16,9 @@ export default function OtpModal({
   const [otpArray, setOtpArray] = useState(["", "", "", "", "", ""]);
   const [shake, setShake] = useState(false);
   const inputsRef = useRef([]);
-
+  const startTimeRef = useRef(null);
+  const duration = 300; 
+  
   useEffect(() => {
     if (visible) {
       document.body.style.overflow = "hidden";
@@ -30,17 +32,23 @@ export default function OtpModal({
 
   useEffect(() => {
     if (!visible) return;
-    setTimeLeft(300);
+
+    startTimeRef.current = Date.now();
     setOtpArray(["", "", "", "", "", ""]);
+    setTimeLeft(duration);
+
     const timer = setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev <= 1) {
-          clearInterval(timer);
-          return 0;
-        }
-        return prev - 1;
-      });
+      const elapsed = Math.floor((Date.now() - startTimeRef.current) / 1000);
+      const remaining = duration - elapsed;
+
+      if (remaining <= 0) {
+        setTimeLeft(0);
+        clearInterval(timer);
+      } else {
+        setTimeLeft(remaining);
+      }
     }, 1000);
+
     return () => clearInterval(timer);
   }, [visible]);
 
@@ -78,20 +86,20 @@ export default function OtpModal({
   };
 
   const handleConfirm = async () => {
-   const code = otpArray.join("");
- 
-   if (code.length < 6) {
-     setShake(true);
-     setTimeout(() => setShake(false), 400);
-     return;
-   }
- 
-   const isValid = await onConfirm(code); 
-   if (!isValid) {
-     setShake(true);
-     setTimeout(() => setShake(false), 400);
-   }
- };
+    const code = otpArray.join("");
+
+    if (code.length < 6) {
+      setShake(true);
+      setTimeout(() => setShake(false), 400);
+      return;
+    }
+
+    const isValid = await onConfirm(code);
+    if (!isValid) {
+      setShake(true);
+      setTimeout(() => setShake(false), 400);
+    }
+  };
 
   if (!visible) return null;
 
@@ -102,9 +110,12 @@ export default function OtpModal({
         <p>
           {t("otpModal.confirmText")} <span>{email}</span>
         </p>
+
         <div className="otp-timer">
           <p>
-            {timeLeft > 0 ? t("otpModal.expiresIn") : t("otpModal.timerExpired")}
+            {timeLeft > 0
+              ? t("otpModal.expiresIn")
+              : t("otpModal.timerExpired")}
           </p>
           {formatTime(timeLeft)}
         </div>

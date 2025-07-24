@@ -8,104 +8,35 @@ import HeroSection from "../components/HeroSection";
 export default function Gallery() {
   const { t } = useTranslation();
 
-  const placeholderImages = [
-    {
-      _id: "1",
-      fileUrl: "https://picsum.photos/500/300?random=1",
-      description: "Random 1",
-      category: "sport",
-      nickname: "Alex",
-    },
-    {
-      _id: "2",
-      fileUrl: "https://picsum.photos/500/300?random=2",
-      description: "Random 2",
-      category: "digital",
-      nickname: "Maria",
-    },
-    {
-      _id: "3",
-      fileUrl: "https://picsum.photos/500/300?random=3",
-      description: "Random 3",
-      category: "traditions",
-      nickname: "John",
-    },
-    {
-      _id: "4",
-      fileUrl: "https://picsum.photos/500/300?random=4",
-      description: "Random 4",
-      category: "nature",
-      nickname: "Sofia",
-    },
-    {
-      _id: "5",
-      fileUrl: "https://picsum.photos/500/300?random=5",
-      description: "Random 5",
-      category: "freestyle",
-      nickname: "Leon",
-    },
-    {
-      _id: "6",
-      fileUrl: "https://picsum.photos/500/300?random=6",
-      description: "Random 6",
-      category: "sport",
-      nickname: "Ana",
-    },
-    {
-      _id: "7",
-      fileUrl: "https://picsum.photos/500/300?random=7",
-      description: "Random 7",
-      category: "digital",
-      nickname: "Mihai",
-    },
-    {
-      _id: "8",
-      fileUrl: "https://picsum.photos/500/300?random=8",
-      description: "Random 8",
-      category: "traditions",
-      nickname: "Laura",
-    },
-    {
-      _id: "9",
-      fileUrl: "https://picsum.photos/500/300?random=9",
-      description: "Random 9",
-      category: "nature",
-      nickname: "Victor",
-    },
-    {
-      _id: "10",
-      fileUrl: "https://picsum.photos/500/300?random=10",
-      description: "Random 10",
-      category: "freestyle",
-      nickname: "Elena",
-    },
-  ];
-
-  const [images, setImages] = useState(placeholderImages);
+  const [images, setImages] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [visibleCount, setVisibleCount] = useState(6);
+  const [loading, setLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
 
   const API_URL = import.meta.env.VITE_APP_API_URL || "http://localhost:5000";
 
-  /*
-  // când backend-ul e gata 
   useEffect(() => {
     const fetchImages = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`${API_URL}/api/images?category=${selectedCategory}&page=${page}&limit=6`);
+        const categoryParam =
+          selectedCategory === "all" ? "" : `?category=${selectedCategory}`;
+        const res = await fetch(`${API_URL}/api/images${categoryParam}`);
         const data = await res.json();
-        setImages(data);
+
+        setImages(Array.isArray(data.uploads) ? data.uploads : []);
       } catch (err) {
-        console.error('Eroare la încărcarea imaginilor:', err);
+        console.error("Eroare la încărcarea imaginilor:", err);
+        setImages([]);
       } finally {
         setLoading(false);
+        setVisibleCount(6);
       }
     };
+
     fetchImages();
-  }, [API_URL]);
-  */
+  }, [API_URL, selectedCategory]);
 
   const filteredImages =
     selectedCategory === "all"
@@ -120,12 +51,15 @@ export default function Gallery() {
     (node) => {
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting && visibleCount < filteredImages.length) {
+        if (
+          entries[0].isIntersecting &&
+          visibleCount < filteredImages.length
+        ) {
           setLoadingMore(true);
           setTimeout(() => {
             setVisibleCount((prev) => prev + 3);
             setLoadingMore(false);
-          }, 500); // simulăm un delay de încărcare
+          }, 500);
         }
       });
       if (node) observer.current.observe(node);
@@ -133,33 +67,49 @@ export default function Gallery() {
     [visibleCount, filteredImages.length]
   );
 
-  useEffect(() => {
-    setVisibleCount(6); // reset la filtru
-  }, [selectedCategory]);
-
   return (
     <div className="gallery-page">
       <HeroSection />
+
       <CategoryToggle
         selected={selectedCategory}
-        onChange={(val) => {
-          setSelectedCategory(val);
-        }}
+        onChange={(val) => setSelectedCategory(val)}
       />
 
-      <div className="gallery">
-        {currentImages.map((img, index) => {
-          if (index === currentImages.length - 1) {
-            return (
-              <div ref={lastImageRef} key={img._id}>
-                <ImageCard img={img} API_URL={API_URL} />
-              </div>
-            );
-          } else {
-            return <ImageCard key={img._id} img={img} API_URL={API_URL} />;
-          }
-        })}
-      </div>
+      {loading ? (
+        <div className="loading-more">
+          <div className="dot"></div>
+          <div className="dot"></div>
+          <div className="dot"></div>
+        </div>
+      ) : (
+        <div className="gallery">
+          {currentImages.map((img, index) => {
+            const imgUrl = img.fileUrl.startsWith("http")
+              ? img.fileUrl
+              : `${API_URL}${img.fileUrl}`;
+
+            if (index === currentImages.length - 1) {
+              return (
+                <div ref={lastImageRef} key={img._id}>
+                  <ImageCard img={{ ...img, fileUrl: imgUrl }} />
+                </div>
+              );
+            } else {
+              return (
+                <ImageCard
+                  key={img._id}
+                  img={{ ...img, fileUrl: imgUrl }}
+                />
+              );
+            }
+          })}
+        </div>
+      )}
+
+      {!loading && filteredImages.length === 0 && (
+        <div className="no-images">{t("gallery.noImages")}</div>
+      )}
 
       {loadingMore && (
         <div className="loading-more">

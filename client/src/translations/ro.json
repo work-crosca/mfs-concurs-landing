@@ -104,6 +104,7 @@
     "seconds": "SECUNDE"
   },
   "inscriere": {
+    "noImage": "Nici o imagine selectată",
     "title": "Înscrie-te în concurs",
     "nickname": "Nume artist",
     "email": "Email",
@@ -151,5 +152,16 @@
     "closeBtn": "Anulare",
     "expiresIn": "Expiră în",
     "timerExpired": "OTP expirat, solicită altul"
+  },
+  "gallery": {
+    "noImages": "Nu există imagini pentru această categorie."
+  },
+  "emailModal": {
+    "title": "Introdu adresa de email",
+    "description": "Pentru a asigura corectitudinea concursului, te rugăm să indici adresa de email. Aceasta va fi folosită doar pentru confirmarea votului",
+    "send": "Trimite codul",
+    "sending": "Se trimite...",
+    "close": "Închide",
+    "invalidEmail": "Te rugăm să introduci o adresă de email validă."
   }
 }

@@ -7,6 +7,8 @@ import {
   IoLogoApple,
   IoLogoGooglePlaystore,
   IoCallOutline,
+  IoMailOutline,
+  IoGlobeOutline
 } from "react-icons/io5";
 import qrCode from "../assets/mmoney.svg";
 
@@ -54,9 +56,19 @@ export default function Footer() {
 
         <div className="footer-column">
           <h4>{t("footer.contact")}</h4>
-          <p className="tel">
+          <p className="contact">
             <IoCallOutline style={{ fontSize: "1.5rem" }} />
             <a href="tel:+37322444444">+373 22 444 444</a>
+          </p>
+
+          <p className="contact">
+            <IoMailOutline style={{ fontSize: "1.5rem" }} />
+            <a href="mailto:moldcell@moldcell.md">moldcell@moldcell.md</a>
+          </p>
+
+          <p className="contact">
+            <IoGlobeOutline style={{ fontSize: "1.5rem" }} />
+            <a href="https://moldcell.md">moldcell.md</a>
           </p>
         </div>
 
