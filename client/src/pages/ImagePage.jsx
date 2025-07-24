@@ -21,6 +21,7 @@ export default function ImagePage() {
   const [darkMode, setDarkMode] = useState(true);
   const [liked, setLiked] = useState(false);
   const [likesCount, setLikesCount] = useState(0);
+  const [lastLikes, setLastLikes] = useState([]);
 
   const [email, setEmail] = useState("");
   const [otpModalVisible, setOtpModalVisible] = useState(false);
@@ -49,7 +50,7 @@ export default function ImagePage() {
 
     fetchImage();
   }, [id, API_URL]);
-  
+
   useEffect(() => {
     const savedEmail = localStorage.getItem("userEmail");
     if (savedEmail) setEmail(savedEmail);
@@ -129,6 +130,7 @@ export default function ImagePage() {
       if (likeRes.ok && likeData.likesCount !== undefined) {
         setLiked(pendingLike);
         setLikesCount(likeData.likesCount);
+        setLastLikes(likeData.lastLikedUsers);
         setToast({
           type: "success",
           message: pendingLike ? "Like înregistrat!" : "Like anulat.",
@@ -190,6 +192,7 @@ export default function ImagePage() {
           likesCount={likesCount}
           isAuthenticated={true}
           onToggle={() => handleRequestOtp(!liked)}
+          lastLikedUsers={lastLikes}
         />
       </div>
       <div className="info-box">

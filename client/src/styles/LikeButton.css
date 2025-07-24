@@ -1,42 +1,61 @@
 .like-button {
-   display: flex;
-   align-items: center;
-   box-sizing: border-box;
-   gap: 0.5rem;
-   cursor: pointer;
-   font-size: 1.2rem;
-   user-select: none;
-   transition: transform 0.2s;
- }
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  user-select: none;
+  transition: transform 0.2s;
+}
 
- .like-button:hover .heart{
+.like-button:hover .heart {
   transform: scale(1.05);
- }
- 
- .like-button .count{
-   color: #e5e5e5;
- }
- 
- .heart {
-   color: #aaa;
-   transition: color 0.3s;
- }
- 
- .heart.liked {
-   color: var(--base-violet, #990ae3);
- }
+}
+
+.like-button .count {
+  color: #e5e5e5;
+}
+
+.heart {
+  color: #aaa;
+  transition: color 0.3s;
+}
+
+.heart.liked {
+  color: var(--base-violet, #990ae3);
+}
+
+.last-liked-users {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+  gap: 8px;
+}
+
+.avatar-circle {
+  width: 24px;
+  height: 24px;
+  background-color: #ccc;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: white;
+}
 
 .like-tooltip {
   position: absolute;
-  top: -100%;
+  top: 120%;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #222;
-  color: white;
+  background: #222;
+  color: #fff;
   padding: 6px 10px;
-  border-radius: 8px;
+  border-radius: 4px;
   font-size: 0.75rem;
   white-space: nowrap;
   z-index: 10;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
