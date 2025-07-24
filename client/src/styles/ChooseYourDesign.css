@@ -11,3 +11,9 @@
    padding: 2rem;
    border: solid 1px #333;
 }
+
+@media (max-width: 768px) {
+   .vote-img-page{
+      padding: 1rem;
+   }
+}

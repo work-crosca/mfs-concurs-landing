@@ -107,7 +107,7 @@
     "noImage": "Nici o imagine selectată",
     "title": "Înscrie-te în concurs",
     "nickname": "Nume artist",
-    "email": "Email",
+    "email": "E-mail",
     "selectCategory": "Alege categoria",
     "categorySport": "Sport & Active Lifestyle",
     "categoryDigital": "Digital & Urban Vibes",
@@ -157,12 +157,12 @@
     "noImages": "Nu există imagini pentru această categorie."
   },
   "emailModal": {
-    "title": "Introdu adresa de email",
-    "description": "Pentru a asigura corectitudinea concursului, te rugăm să indici adresa de email. Aceasta va fi folosită doar pentru confirmarea votului",
+    "title": "Introdu adresa de e-mail",
+    "description": "Pentru a asigura corectitudinea concursului, te rugăm să indici adresa de e-mail. Aceasta va fi folosită doar pentru confirmarea votului",
     "send": "Trimite codul",
     "sending": "Se trimite...",
     "close": "Închide",
-    "invalidEmail": "Te rugăm să introduci o adresă de email validă."
+    "invalidEmail": "Te rugăm să introduci o adresă de e-mail validă."
   },
   "chooseDesign": {
     "period": "Perioada de votare este deschisă!",
