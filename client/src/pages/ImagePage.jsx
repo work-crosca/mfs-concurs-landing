@@ -49,10 +49,23 @@ export default function ImagePage() {
 
     fetchImage();
   }, [id, API_URL]);
+  
+  useEffect(() => {
+    const savedEmail = localStorage.getItem("userEmail");
+    if (savedEmail) setEmail(savedEmail);
+  }, []);
 
   const handleRequestOtp = (like) => {
-    setPendingLike(like);
-    setEmailModalVisible(true);
+    const savedEmail = localStorage.getItem("userEmail");
+  
+    if (savedEmail) {
+      setEmail(savedEmail);
+      setPendingLike(like);
+      setOtpModalVisible(true);
+    } else {
+      setPendingLike(like);
+      setEmailModalVisible(true);
+    }
   };
 
   const handleEmailSubmit = async (submittedEmail) => {
@@ -66,6 +79,7 @@ export default function ImagePage() {
 
       const data = await res.json();
       if (data.success) {
+        localStorage.setItem("userEmail", submittedEmail);
         setEmail(submittedEmail);
         setOtpModalVisible(true);
         setEmailModalVisible(false);
