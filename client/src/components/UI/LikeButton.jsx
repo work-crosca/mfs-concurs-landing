@@ -31,7 +31,7 @@ export default function LikeButton({
             </div>
           ))}
            {remainingCount > 0 && lastLikedUsers.length > 0 && (
-            <div className="avatar-circle more">{remainingCount}</div>
+            <div className="avatar-circle more">+{remainingCount}</div>
           )}
         </div>
       )}
