@@ -122,17 +122,15 @@ export default function ImagePage() {
         setLiked(pendingLike);
         setLikesCount(likeData.likesCount);
         setLastLikes(likeData.lastLikedUsers);
-
+      
         const storedLikes = JSON.parse(localStorage.getItem("likedImages") || "{}");
-
         if (pendingLike) {
           storedLikes[id] = true;
         } else {
           delete storedLikes[id];
         }
-
         localStorage.setItem("likedImages", JSON.stringify(storedLikes));
-
+      
         setToast({
           type: "success",
           message: pendingLike ? "Like înregistrat!" : "Like anulat.",
@@ -140,6 +138,13 @@ export default function ImagePage() {
         setOtpModalVisible(false);
         setOtpCode("");
       } else {
+        if (likeData?.code === 1001 && pendingLike) {
+          const storedLikes = JSON.parse(localStorage.getItem("likedImages") || "{}");
+          storedLikes[id] = true;
+          localStorage.setItem("likedImages", JSON.stringify(storedLikes));
+          setLiked(true);
+        }
+      
         setToast({
           type: "error",
           message: likeData.message || "Eroare la salvarea like.",
