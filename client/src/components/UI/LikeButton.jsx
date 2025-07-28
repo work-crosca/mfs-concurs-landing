@@ -8,13 +8,13 @@ export default function LikeButton({
   onToggle,
   isAuthenticated,
   onLoginPrompt,
-  lastLikedUsers = []
+  lastLikedUsers = [],
 }) {
   const [showTooltip, setShowTooltip] = useState(false);
 
   const handleClick = () => {
     if (!isAuthenticated) {
-      if (onLoginPrompt) onLoginPrompt();
+      onLoginPrompt?.();
       return;
     }
     onToggle?.();
@@ -27,20 +27,23 @@ export default function LikeButton({
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
     >
+      {showTooltip && lastLikedUsers.length > 0 && (
+        <div className="like-tooltip inline">
+          {lastLikedUsers.map((user, index) => (
+            <div className="avatar-circle" key={index}>
+              {user}
+            </div>
+          ))}
+        </div>
+      )}
+
       {liked ? (
         <BsFillHeartFill className="heart liked" />
       ) : (
         <BsHeart className="heart" />
       )}
-      <span className="count">{likesCount}</span>
 
-      {showTooltip && lastLikedUsers.length > 0 && (
-        <div className="like-tooltip">
-          {lastLikedUsers.map((user, index) => (
-            <div key={index}>{user}</div>
-          ))}
-        </div>
-      )}
+      <span className="count">{likesCount}</span>
     </div>
   );
 }
