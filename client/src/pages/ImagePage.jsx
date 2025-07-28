@@ -39,8 +39,8 @@ export default function ImagePage() {
         const res = await fetch(`${API_URL}/api/images/${id}`);
         const data = await res.json();
         setImage(data);
-        setLiked(data.hasLiked || false);
         setLikesCount(data.likesCount || 0);
+        setLastLikes(data.lastLikedUsers || []);
       } catch (err) {
         console.error("Eroare la fetch imagine:", err);
       } finally {
@@ -52,21 +52,13 @@ export default function ImagePage() {
   }, [id, API_URL]);
 
   useEffect(() => {
-    const savedEmail = localStorage.getItem("userEmail");
-    if (savedEmail) setEmail(savedEmail);
-  }, []);
+    const storedLikes = JSON.parse(localStorage.getItem("likedImages") || "{}");
+    if (storedLikes[id]) setLiked(true);
+  }, [id]);
 
   const handleRequestOtp = (like) => {
-    const savedEmail = localStorage.getItem("userEmail");
-  
-    if (savedEmail) {
-      setEmail(savedEmail);
-      setPendingLike(like);
-      setOtpModalVisible(true);
-    } else {
-      setPendingLike(like);
-      setEmailModalVisible(true);
-    }
+    setPendingLike(like);
+    setEmailModalVisible(true);
   };
 
   const handleEmailSubmit = async (submittedEmail) => {
@@ -80,7 +72,6 @@ export default function ImagePage() {
 
       const data = await res.json();
       if (data.success) {
-        localStorage.setItem("userEmail", submittedEmail);
         setEmail(submittedEmail);
         setOtpModalVisible(true);
         setEmailModalVisible(false);
@@ -131,6 +122,17 @@ export default function ImagePage() {
         setLiked(pendingLike);
         setLikesCount(likeData.likesCount);
         setLastLikes(likeData.lastLikedUsers);
+
+        const storedLikes = JSON.parse(localStorage.getItem("likedImages") || "{}");
+
+        if (pendingLike) {
+          storedLikes[id] = true;
+        } else {
+          delete storedLikes[id];
+        }
+
+        localStorage.setItem("likedImages", JSON.stringify(storedLikes));
+
         setToast({
           type: "success",
           message: pendingLike ? "Like înregistrat!" : "Like anulat.",
@@ -215,7 +217,6 @@ export default function ImagePage() {
 
       <ChooseYourDesign />
 
-      {/* === Modal Email + OTP === */}
       {emailModalVisible && (
         <EmailModal
           visible={emailModalVisible}
