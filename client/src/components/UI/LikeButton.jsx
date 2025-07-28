@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BsFillHeartFill, BsHeart } from "react-icons/bs";
 import "../../styles/LikeButton.css";
 
@@ -10,8 +10,6 @@ export default function LikeButton({
   onLoginPrompt,
   lastLikedUsers = [],
 }) {
-  const [showTooltip, setShowTooltip] = useState(false);
-
   const handleClick = () => {
     if (!isAuthenticated) {
       onLoginPrompt?.();
@@ -20,20 +18,21 @@ export default function LikeButton({
     onToggle?.();
   };
 
+  const visibleUsers = lastLikedUsers.slice(0, 3);
+  const remainingCount = likesCount - visibleUsers.length;
+
   return (
-    <div
-      className="like-button"
-      onClick={handleClick}
-      onMouseEnter={() => setShowTooltip(true)}
-      onMouseLeave={() => setShowTooltip(false)}
-    >
-      {showTooltip && lastLikedUsers.length > 0 && (
+    <div className="like-button" onClick={handleClick}>
+      {likesCount > 0 && (
         <div className="like-tooltip inline">
-          {lastLikedUsers.map((user, index) => (
+          {visibleUsers.map((user, index) => (
             <div className="avatar-circle" key={index}>
               {user}
             </div>
           ))}
+           {remainingCount > 0 && lastLikedUsers.length > 0 && (
+            <div className="avatar-circle more">{remainingCount}</div>
+          )}
         </div>
       )}
 

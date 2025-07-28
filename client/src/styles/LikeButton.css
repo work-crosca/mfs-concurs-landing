@@ -39,15 +39,15 @@
 .like-tooltip.inline {
   display: flex;
   gap: 4px;
-  background-color: #333;
-  padding: 0.5rem;
+  background-color: #545556;
+  padding: 4px;
   border-radius: 2rem;
 }
 
 .avatar-circle {
   width: 1.5rem;
   height: 1.5rem;
-  background: var(--gradiennt-01);
+  background: #333;
   color: #fff;
   font-size: 0.75rem;
   border-radius: 50%;
@@ -56,4 +56,21 @@
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease-in-out;
+}
+
+.like-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.avatar-circle.more {
+  background: #ccc;
+  color: #000;
+}
+.like-tooltip.inline:empty,
+.avatar-circle.more:empty{
+  display: none!important;
+  opacity: 0;
 }
