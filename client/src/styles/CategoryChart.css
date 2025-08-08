@@ -1,0 +1,13 @@
+.category-chart-container {
+  margin-top: 2rem;
+  background: #111;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+
+.category-chart-container h3 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #333;
+}

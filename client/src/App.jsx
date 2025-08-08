@@ -6,19 +6,32 @@ import Footer from "./components/Footer";
 import Gallery from "./pages/Gallery";
 import NotFound from "./pages/NotFound";
 import ImagePage from "./pages/ImagePage";
+import AdminLogin from "./components/AdminLogin";
+import AdminDashboard from "./components/AdminDashboard";
+import RequireAdminAuth from "./components/admin/RequireAdminAuth";
 
 function App() {
+  const isAdminRoute = window.location.pathname.startsWith("/admin");
   return (
     <BrowserRouter>
-      <NavBar />
+      {!isAdminRoute && <NavBar />}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/inscriere" element={<InscrierePage />} />
+        <Route path="*" element={<NotFound />} />
+        {/* Gallery */}
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/image/:id" element={<ImagePage />} />
-        <Route path="*" element={<NotFound />} />
-        {/* ruta pentru galerie */}
-        {/*<Route path="/votare" element={<VotarePage />} /> */}
+        {/* Admin */}
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route
+          path="/admin/dashboard"
+          element={
+            <RequireAdminAuth>
+              <AdminDashboard />
+            </RequireAdminAuth>
+          }
+        />
       </Routes>
       <Footer />
     </BrowserRouter>
